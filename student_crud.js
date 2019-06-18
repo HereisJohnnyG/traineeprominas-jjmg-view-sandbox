@@ -25,7 +25,7 @@ $("#root").ready(
         app.appendChild(table);
         
         var request = new XMLHttpRequest();
-        request.open('GET', 'https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course', true);
+        request.open('GET', 'https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student', true);
         request.onload = function () {
         
           // Begin accessing JSON data here
@@ -33,27 +33,28 @@ $("#root").ready(
           if (request.status >= 200 && request.status < 400) {
             app.appendChild(container);
             app.appendChild(table);
-            data.forEach(course => {
+            data.forEach(student => {
                 const card = document.createElement('thead');
                 
                 const id = document.createElement('th');
-                id.textContent = course.id;
+                id.textContent = student.id;
                 id.setAttribute('scope', 'col');
         
                 const name = document.createElement('th');
-                name.textContent = course.name;
+                name.textContent = student.name;
                 name.setAttribute('scope', 'col');
         
-                const period = document.createElement('th');
-                period.textContent = course.period;
-                period.setAttribute('scope', 'col');
+                const age = document.createElement('th');
+                age.textContent = student.age;
+                age.setAttribute('scope', 'col');
         
-                const city = document.createElement('th');
-                city.textContent = course.city;
-                city.setAttribute('scope', 'col');
+                const lastname = document.createElement('th');
+                lastname.textContent = student.lastname;
+                lastname.setAttribute('scope', 'col');
+
                 let i = 0;
                 teacher_var = [];
-                course.teacher.forEach(teacher => {
+                student.teacher.forEach(student => {
                     
                     teacher_var[i] = document.createElement('th');
                     teacher_var[i].textContent = teacher.name;
@@ -65,8 +66,8 @@ $("#root").ready(
                 container.appendChild(card);
                 card.appendChild(id);
                 card.appendChild(name);
-                card.appendChild(period);
-                card.appendChild(city);
+                card.appendChild(age);
+                card.appendChild(lastname);
                 teacher_var.forEach(element => {
                     card.appendChild(element);
                 });
@@ -84,15 +85,15 @@ $("#root").ready(
 
 
 function postIt(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student";
 
     var data = {};
     data.name = document.getElementById("name").value;
     data.period  = document.getElementById("period").value;
-    if(document.getElementById("city").checked){
-        data.city = true;
+    if(document.getElementById("lastname").checked){
+        data.lastname = true;
     }else{
-        data.city = false;
+        data.lastname = false;
     }
     var json = JSON.stringify(data);
 
@@ -103,15 +104,15 @@ function postIt(){
     xhr.onload = function () {
         alert(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "201") {
-            console.table(courses);
+            console.table(students);
         } else {
-            console.error(courses);
+            console.error(students);
         }
     }
 }
 
-function getCourse(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+function getstudent(){
+    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student";
     var xhr  = new XMLHttpRequest()
     id = document.getElementById("id").value;
     xhr.open('GET', url+'/'+id, true)
@@ -119,16 +120,16 @@ function getCourse(){
         var data = JSON.parse(this.response);
         console.log(data);
 	    if (xhr.readyState == 4 && xhr.status == "200") {
-		    data.forEach(course => {
+		    data.forEach(student => {
 
-                document.getElementById('push').setAttribute('value', course.id);
+                document.getElementById('push').setAttribute('value', student.id);
 
 
-                document.getElementById("name").value = course.name
-                document.getElementById("period").value = course.period
+                document.getElementById("name").value = student.name
+                document.getElementById("period").value = student.period
                 const name = document.createElement('th');
-                name.textContent = course.name;
-                document.getElementById("city").value = course.city;
+                name.textContent = student.name;
+                document.getElementById("lastname").value = student.lastname;
           
               });
             } else {
@@ -140,16 +141,16 @@ function getCourse(){
     xhr.send(null);
 }
 
-function updatecourse(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+function updatestudent(){
+    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student";
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
     data.period  = document.getElementById("period").value;
-    if(document.getElementById("city").checked){
-        data.city = true;
+    if(document.getElementById("lastname").checked){
+        data.lastname = true;
     }else{
-        data.city = false;
+        data.lastname = false;
     }
     var json = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
@@ -157,30 +158,30 @@ function updatecourse(){
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function () {
         alert(xhr.responseText);
-        var course = JSON.parse(xhr.responseText);
+        var student = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "200") {
-            console.table(course);
-            alert(course);
+            console.table(student);
+            alert(student);
         } else {
-            console.error(course);
-            alert(course);
+            console.error(student);
+            alert(student);
         }
     }
     xhr.send(json);
 }
 
-function deleteCourse(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+function deletestudent(){
+    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student";
     var xhr = new XMLHttpRequest();
     id = document.getElementById("deleter").value;
     xhr.open("DELETE", url+'/'+id, true);
     xhr.onload = function () {
         alert(xhr.responseText);
-        var course = JSON.parse(xhr.responseText);
+        var student = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "200") {
-            console.table(course);
+            console.table(student);
         } else {
-            console.error(course);
+            console.error(student);
         }
     }
     xhr.send(null);
@@ -188,7 +189,7 @@ function deleteCourse(){
 
 
 function getOne(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student";
     var xhr  = new XMLHttpRequest()
     const app = document.getElementById('root');
     while (app.firstChild) {
@@ -208,26 +209,26 @@ function getOne(){
 	    if (xhr.readyState == 4 && xhr.status == "200") {
             app.appendChild(container);
             app.appendChild(table);
-		    data.forEach(course => {const card = document.createElement('thead');
+		    data.forEach(student => {const card = document.createElement('thead');
                 
             const id = document.createElement('th');
-            id.textContent = course.id;
+            id.textContent = student.id;
             id.setAttribute('scope', 'col');
     
             const name = document.createElement('th');
-            name.textContent = course.name;
+            name.textContent = student.name;
             name.setAttribute('scope', 'col');
     
             const period = document.createElement('th');
-            period.textContent = course.period;
+            period.textContent = student.period;
             period.setAttribute('scope', 'col');
     
-            const city = document.createElement('th');
-            city.textContent = course.city;
-            city.setAttribute('scope', 'col');
+            const lastname = document.createElement('th');
+            lastname.textContent = student.lastname;
+            lastname.setAttribute('scope', 'col');
             let i = 0;
             teacher_var = [];
-            course.teacher.forEach(teacher => {
+            student.teacher.forEach(teacher => {
                 
                 teacher_var[i] = document.createElement('th');
                 teacher_var[i].textContent = teacher.name;
@@ -239,14 +240,14 @@ function getOne(){
             deleter.textContent = 'deletar usuário';
             deleter.setAttribute('scope', 'col');
             deleter.setAttribute('id', 'deleter');
-            deleter.setAttribute('value', course.id);
-            deleter.setAttribute('onclick','deleteCourse();');
+            deleter.setAttribute('value', student.id);
+            deleter.setAttribute('onclick','deletestudent();');
         
             container.appendChild(card);
             card.appendChild(id);
             card.appendChild(name);
             card.appendChild(period);
-            card.appendChild(city);
+            card.appendChild(lastname);
             teacher_var.forEach(element => {
                 card.appendChild(element);
             });

@@ -89,21 +89,6 @@ function postIt(){
     }
 }
 
-function searchTeacher(){
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/teacher', true);
-    request.onload = async function () {
-        var data = await JSON.parse(this.response);
-        if (request.status >= 200 && request.status < 400) {
-            console.table(data);
-            return(data);
-        } else {
-            console.error(request);
-            return(data);
-        }
-    }
-    request.send(null);
-}
 
 function getTeacher(){
     var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/teacher";

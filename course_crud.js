@@ -1,22 +1,33 @@
 
-$('#selection').ready(
-    function(){
-        text = "<select class='selectpicker' multiple data-live-search='true'>"
-        searchTeacher().forEach(teacher => {
-            text+= "<option>"+teacher.name+"</option>";
-        });
-        document.getElementById('selection').innerHTML = text;
-    }
-);
+$('#root').ready(function(){
+        text = "<select id='teacher' class='selectpicker' multiple data-live-search='true'>"
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/teacher', true);
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            if (request.status >= 200 && request.status < 400) {
+                
+                data.forEach(teacher => {
+                    text+= "<option value='"+teacher.id+"'>"+teacher.name+"</option>";
+                });
+                text+="</select>";
+                
+                document.getElementById("selection").innerHTML += text;
+            }
+            
+        }
+        request.send();
+});
 $("#root").ready(
     function(){
+    if(document.getElementById('root')){
         const app = document.getElementById('root');
 
 
         const logo = document.createElement('img');
         logo.src = 'logo.png';
         
-        const container = document.createElement('div');
+        const container = document.createElement('table');
         container.setAttribute('class', 'container');
         
         const table = document.createElement('table');
@@ -27,7 +38,7 @@ $("#root").ready(
         app.appendChild(table);
         
         var request = new XMLHttpRequest();
-        request.open('GET', 'https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course', true);
+        request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course', true);
         request.onload = function () {
         
           // Begin accessing JSON data here
@@ -82,6 +93,7 @@ $("#root").ready(
         }
         
         request.send();
+    }
 });
 
 
@@ -91,11 +103,9 @@ function postIt(){
     var data = {};
     data.name = document.getElementById("name").value;
     data.period  = document.getElementById("period").value;
-    if(document.getElementById("city").checked){
-        data.city = true;
-    }else{
-        data.city = false;
-    }
+    data.city = document.getElementById("city").value
+    data.teacher.push($("teacher"));
+    data.teacher = document.getElementById("teacher").value;
     var json = JSON.stringify(data);
 
     var xhr = new XMLHttpRequest();
@@ -142,17 +152,13 @@ function getCourse(){
     xhr.send(null);
 }
 
-function updatecourse(){
+function updateCourse(){
     var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
     data.period  = document.getElementById("period").value;
-    if(document.getElementById("city").checked){
-        data.city = true;
-    }else{
-        data.city = false;
-    }
+    data.city = document.getElementById("city").value;
     var json = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", url+'/'+id, true);
@@ -196,7 +202,7 @@ function getOne(){
     while (app.firstChild) {
         app.removeChild(app.firstChild);
     }
-    const container = document.createElement('div');
+    const container = document.createElement('table');
     container.setAttribute('class', 'container');
     const table = document.createElement('table');
     container.setAttribute('class', 'table');
