@@ -17,10 +17,28 @@
 </head>
 
 <body>
-
-      <div id="root"></div>
-
-  <script src="scripts.js"></script>
+    
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+        </div>
+        <div class="form-group">
+          <label for="Sobrenome">Sobrenome</label>
+          <input type="text" class="form-control" id="lastname" placeholder="Sobrenome">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="profile1" value="admin" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Admin
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="profile2" value="guess">
+            <label class="form-check-label" for="exampleRadios2">
+                Guess
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="postIt()">Submit</button>
+ 
+    <script src="user_post.js"></script>
 </body>
-
-</html>
