@@ -1,4 +1,3 @@
-
 $('#root').ready(function(){
         text = "<select id='teacher' class='selectpicker' multiple data-live-search='true'>"
         var request = new XMLHttpRequest();
