@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ghibli App</title>
+  <title>School</title>
   
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,9 +18,15 @@
 
 <body>
 
+    <div>
+        <label for="nome">Digite o ID do user:</label>
+        <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+        <button type="submit" class="btn btn-primary" onclick="getOne()">Submit</button>
+  </div>
       <div id="root"></div>
 
   <script src="scripts.js"></script>
+  <script src="user_post.js"></script>
 </body>
 
 </html>

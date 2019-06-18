@@ -1,5 +1,6 @@
 const app = document.getElementById('root');
 
+
 const logo = document.createElement('img');
 logo.src = 'logo.png';
 
@@ -9,7 +10,7 @@ container.setAttribute('class', 'container');
 const table = document.createElement('table');
 container.setAttribute('class', 'table');
 
-app.appendChild(logo);
+//app.appendChild(logo);
 app.appendChild(container);
 app.appendChild(table);
 
@@ -20,6 +21,8 @@ request.onload = function () {
   // Begin accessing JSON data here
   var data = JSON.parse(this.response);
   if (request.status >= 200 && request.status < 400) {
+    app.appendChild(container);
+    app.appendChild(table);
     data.forEach(user => {
       const card = document.createElement('thead');
       
@@ -48,7 +51,7 @@ request.onload = function () {
     });
   } else {
     const errorMessage = document.createElement('marquee');
-    errorMessage.textContent = `Gah, it's not working!`;
+    errorMessage.textContent = 'Não foi possivel realizar a ação';
     app.appendChild(errorMessage);
   }
 }
