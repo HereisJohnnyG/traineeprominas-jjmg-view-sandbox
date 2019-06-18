@@ -166,8 +166,10 @@ function updateUser(){
         var users = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.table(users);
+            alert(users);
         } else {
             console.error(users);
+            alert(users);
         }
     }
 xhr.send(json);
