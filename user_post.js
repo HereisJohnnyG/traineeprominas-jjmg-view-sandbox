@@ -1,9 +1,9 @@
  function postIt(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/user";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/user";
 
     var data = {};
     data.name = document.getElementById("name").value;
-    data.lastname  = document.getElementById("lastname").value;
+    data.lastName  = document.getElementById("lastname").value;
     if(document.getElementById("profile1").checked){
         data.profile = document.getElementById("profile1").value;
     }else{
@@ -26,13 +26,13 @@
 }
 
 function getOne(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/user";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/user";
     var xhr  = new XMLHttpRequest()
     const app = document.getElementById('root');
     while (app.firstChild) {
         app.removeChild(app.firstChild);
     }
-    const container = document.createElement('div');
+    const container = document.createElement('table');
     container.setAttribute('class', 'container');
     const table = document.createElement('table');
     container.setAttribute('class', 'table');
@@ -46,43 +46,43 @@ function getOne(){
 	    if (xhr.readyState == 4 && xhr.status == "200") {
             app.appendChild(container);
             app.appendChild(table);
-		    data.forEach(user => {
-                
-                const card = document.createElement('thead');
+            user = data;    
+
+            const card = document.createElement('thead');
       
-                const id = document.createElement('th');
-                id.textContent = user.id;
-                id.setAttribute('scope', 'col');
+            const id = document.createElement('th');
+            id.textContent = user.id;
+            id.setAttribute('scope', 'col');
 
-                const name = document.createElement('th');
-                name.textContent = user.name;
-                name.setAttribute('scope', 'col');
+            const name = document.createElement('th');
+            name.textContent = user.name;
+            name.setAttribute('scope', 'col');
 
-                const lastname = document.createElement('th');
-                lastname.textContent = user.lastname;
-                lastname.setAttribute('scope', 'col');
+            const lastName = document.createElement('th');
+            lastName.textContent = user.lastName;
+            lastName.setAttribute('scope', 'col');
 
-                const profile = document.createElement('th');
-                profile.textContent = user.profile;
-                console.log(user.profile);
-                profile.setAttribute('scope', 'col');
+            const profile = document.createElement('th');
+            profile.textContent = user.profile;
+            console.log(user.profile);
+            profile.setAttribute('scope', 'col');
 
-                const deleter = document.createElement('button');
-                deleter.textContent = 'deletar usuário';
-                deleter.setAttribute('scope', 'col');
-                deleter.setAttribute('id', 'deleter');
-                deleter.setAttribute('value', user.id);
-                deleter.setAttribute('onclick','deleteUser();');
+            const deleter = document.createElement('button');
+            deleter.textContent = 'deletar usuário';
+            deleter.setAttribute('scope', 'col');
+            deleter.setAttribute('id', 'deleter');
+            deleter.setAttribute('value', user.id);
+            deleter.setAttribute('onclick','deleteUser();');
 
-                container.appendChild(card);
-                card.appendChild(id);
-                card.appendChild(name);
-                card.appendChild(lastname);
-                card.appendChild(profile);
-                card.appendChild(deleter);
+            container.appendChild(card);
+            card.appendChild(id);
+            card.appendChild(name);
+            card.appendChild(lastName);
+            card.appendChild(profile);
+            card.appendChild(deleter);
 
           
-              });
+              
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';
@@ -94,7 +94,7 @@ function getOne(){
 
 
 function getUser(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/user";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/user";
     var xhr  = new XMLHttpRequest()
     id = document.getElementById("id").value;
     xhr.open('GET', url+'/'+id, true)
@@ -102,24 +102,22 @@ function getUser(){
         var data = JSON.parse(this.response);
         console.log(data);
 	    if (xhr.readyState == 4 && xhr.status == "200") {
-		    data.forEach(user => {
-                document.getElementById('push').setAttribute('value', user.id);
+		    user = data;
+            document.getElementById('push').setAttribute('value', user.id);
 
 
-                document.getElementById("name").value = user.name
-                document.getElementById("lastname").value = user.lastname
-                const name = document.createElement('th');
-                name.textContent = user.name;
-                
-                if(user.profile == "admin"){
-                    document.getElementById("profile1").checked = true;
-                    document.getElementById("profile2").checked = false;
-                }else{
-                    document.getElementById("profile1").checked = false;
-                    data.profile = document.getElementById("profile2").checked = true;
-                }
-          
-              });
+            document.getElementById("name").value = user.name
+            document.getElementById("lastname").value = user.lastName
+            const name = document.createElement('th');
+            name.textContent = user.name;
+            
+            if(user.profile == "admin"){
+                document.getElementById("profile1").checked = true;
+                document.getElementById("profile2").checked = false;
+            }else{
+                document.getElementById("profile1").checked = false;
+                data.profile = document.getElementById("profile2").checked = true;
+            }
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';
@@ -130,7 +128,7 @@ function getUser(){
 }
 
 function deleteUser(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/user";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/user";
     var xhr = new XMLHttpRequest();
     id = document.getElementById("deleter").value;
     xhr.open("DELETE", url+'/'+id, true);
@@ -147,11 +145,11 @@ function deleteUser(){
 }
 
 function updateUser(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/user";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/user";
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
-    data.lastname  = document.getElementById("lastname").value;
+    data.lastName  = document.getElementById("lastname").value;
     if(document.getElementById("profile1").checked){
         data.profile = document.getElementById("profile1").value;
     }else{

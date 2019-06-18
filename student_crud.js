@@ -1,4 +1,3 @@
-
 $('#selection').ready(
     function(){
         text = "<select class='selectpicker' multiple data-live-search='true'>"
@@ -11,7 +10,6 @@ $('#selection').ready(
 $("#root").ready(
     function(){
         const app = document.getElementById('root');
-
 
         const logo = document.createElement('img');
         logo.src = 'logo.png';

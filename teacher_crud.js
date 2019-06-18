@@ -6,7 +6,7 @@ $("#root").ready(
         const logo = document.createElement('img');
         logo.src = 'logo.png';
         
-        const container = document.createElement('div');
+        const container = document.createElement('table');
         container.setAttribute('class', 'container');
         
         const table = document.createElement('table');
@@ -87,6 +87,22 @@ function postIt(){
             console.error(teachers);
         }
     }
+}
+
+function searchTeacher(){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/teacher', true);
+    request.onload = async function () {
+        var data = await JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+            console.table(data);
+            return(data);
+        } else {
+            console.error(request);
+            return(data);
+        }
+    }
+    request.send(null);
 }
 
 function getTeacher(){
@@ -178,7 +194,7 @@ function getOne(){
     while (app.firstChild) {
         app.removeChild(app.firstChild);
     }
-    const container = document.createElement('div');
+    const container = document.createElement('table');
     container.setAttribute('class', 'container');
     const table = document.createElement('table');
     container.setAttribute('class', 'table');

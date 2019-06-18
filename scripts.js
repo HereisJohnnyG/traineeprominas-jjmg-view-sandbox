@@ -4,18 +4,18 @@ const app = document.getElementById('root');
 const logo = document.createElement('img');
 logo.src = 'logo.png';
 
-const container = document.createElement('div');
+const container = document.createElement('table');
 container.setAttribute('class', 'container');
 
 const table = document.createElement('table');
-container.setAttribute('class', 'table');
+container.setAttribute('class', 'table table-striped');
 
 //app.appendChild(logo);
 app.appendChild(container);
 app.appendChild(table);
 
 var request = new XMLHttpRequest();
-request.open('GET', 'https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/user', true);
+request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/user', true);
 request.onload = function () {
 
   // Begin accessing JSON data here
@@ -34,9 +34,9 @@ request.onload = function () {
       name.textContent = user.name;
       name.setAttribute('scope', 'col');
 
-      const lastname = document.createElement('th');
-      lastname.textContent = user.lastname;
-      lastname.setAttribute('scope', 'col');
+      const lastName = document.createElement('th');
+      lastName.textContent = user.lastName;
+      lastName.setAttribute('scope', 'col');
 
       const profile = document.createElement('th');
       profile.textContent = user.profile;
@@ -45,7 +45,7 @@ request.onload = function () {
       container.appendChild(card);
       card.appendChild(id);
       card.appendChild(name);
-      card.appendChild(lastname);
+      card.appendChild(lastName);
       card.appendChild(profile);
 
     });
