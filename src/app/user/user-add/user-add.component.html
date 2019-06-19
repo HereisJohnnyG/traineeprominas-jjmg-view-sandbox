@@ -1,3 +1,16 @@
-<p>
-  user-add works!
-</p>
+<div>
+  <h3>Adicionar Novo Usuário</h3>
+</div>
+<form class="form-width example-container" [formGroup]="productForm" (ngSubmit)="addProduto(productForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Nome do Usuário" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="profile" placeholder="Perfil" formControlName="profile">
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!productForm.valid" mat-button color="primary" >Adicionar</button>
+</form>

@@ -36,7 +36,7 @@ export class UserService {
   }
 
   postUser(user): Observable<User> {
-    return this.http.post<User>(apiUrl, user, httpOptions).pipe(
+    return this.http.post<User>(`${apiUrl}user`, user, httpOptions).pipe(
       tap((user: User) => console.log(`adicionou o usuário com w/ id=${user.id}`)),
       catchError(this.handleError<User>('postUser'))
     );
