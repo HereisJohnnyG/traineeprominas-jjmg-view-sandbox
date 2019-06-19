@@ -1,0 +1,23 @@
+{
+  "name": "traineeprominas-jjmg-view-sandbox",
+  "version": "1.0.0",
+  "description": "- [View the tutorial](https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HereisJohnnyG/traineeprominas-jjmg-view-sandbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HereisJohnnyG/traineeprominas-jjmg-view-sandbox/issues"
+  },
+  "homepage": "https://github.com/HereisJohnnyG/traineeprominas-jjmg-view-sandbox#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
