@@ -1,10 +1,22 @@
 $('#selection').ready(
     function(){
-        text = "<select class='selectpicker' multiple data-live-search='true'>"
-        searchTeacher().forEach(teacher => {
-            text+= "<option>"+teacher.name+"</option>";
-        });
-        document.getElementById('selection').innerHTML = text;
+        text = "<select id='course' class='selectpicker' data-live-search='true'>"
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course', true);
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            if (request.status >= 200 && request.status < 400) {
+                
+                data.forEach(course => {
+                    text+= "<option value='"+course.id+"'>"+course.name+"</option>";
+                });
+                text+="</select>";
+                
+                document.getElementById("selection").innerHTML += text;
+            }
+            
+        }
+        request.send();
     }
 );
 $("#root").ready(
@@ -83,12 +95,10 @@ function postIt(){
 
     var data = {};
     data.name = document.getElementById("name").value;
-    data.period  = document.getElementById("period").value;
-    if(document.getElementById("lastname").checked){
-        data.lastname = true;
-    }else{
-        data.lastname = false;
-    }
+    data.lastName  = document.getElementById("lastname").value;
+    data.age  = document.getElementById("age").value;
+    data.course  = document.getElementById("course").value;
+
     var json = JSON.stringify(data);
 
     var xhr = new XMLHttpRequest();
@@ -105,34 +115,31 @@ function postIt(){
     }
 }
 
-function getstudent(){
+function getStudent(){
     var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/student";
     var xhr  = new XMLHttpRequest()
     id = document.getElementById("id").value;
     xhr.open('GET', url+'/'+id, true)
     xhr.onload = function () {
-        var data = JSON.parse(this.response);
-        console.log(data);
+        var student = JSON.parse(this.response);
 	    if (xhr.readyState == 4 && xhr.status == "200") {
-		    data.forEach(student => {
+		   
 
                 document.getElementById('push').setAttribute('value', student.id);
 
 
                 document.getElementById("name").value = student.name
-                document.getElementById("period").value = student.period
-                const name = document.createElement('th');
-                name.textContent = student.name;
-                document.getElementById("lastname").value = student.lastname;
+                document.getElementById("lastname").value = student.lastName
+                document.getElementById("age").value = student.age;
+                document.getElementById("course").value = student.course.id;
           
-              });
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';
               alert(errorMessage);
             }
     }
-    xhr.send(null);
+    xhr.send();
 }
 
 function updatestudent(){
@@ -140,12 +147,10 @@ function updatestudent(){
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
-    data.period  = document.getElementById("period").value;
-    if(document.getElementById("lastname").checked){
-        data.lastname = true;
-    }else{
-        data.lastname = false;
-    }
+    data.lastName  = document.getElementById("lastname").value;
+    data.age  = document.getElementById("age").value;
+    data.course  = document.getElementById("course").value;
+    
     var json = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", url+'/'+id, true);

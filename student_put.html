@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>School</title>
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" /> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+            <div class="container-fluid">     
+                <ul class="nav navbar-nav">
+                <li class="active"><a href="./index_user.html">User</a></li>
+                <li><a href="./index_teacher.html">Teacher</a></li>
+                <li><a href="./index_course.html">Course</a></li>
+                <li><a href="./index_student.html">Student</a></li>
+                </ul>
+            </div>
+    </nav>
+    <div>
+        <label for="nome">Digite o ID do Estudante:</label>
+        <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+        <button type="submit" class="btn btn-primary" onclick="getStudent()">Submit</button>
+    </div>
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+      </div>
+      <div class="form-group">
+        <label for="surname">Sobrenome</label>
+        <input type="text" class="form-control" id="lastname" placeholder="Semestre">
+      </div>
+      <div class="form-group">
+          <label for="Cidade">Idade</label>
+          <input type="number" class="form-control" id="age" placeholder="Cidade">
+      </div>
+      <div id="selection">
+      <!-- <select class="selectpicker" multiple data-live-search="true">
+          <option>Mustard</option>
+          <option>Ketchup</option>
+          <option>Relish</option>
+        </select> -->
+      </div>
+      <button type="submit" class="btn btn-primary" id="push"  onclick="updatestudent()">Submit</button>
+    <script src="student_crud.js"></script>
+</body>
+
+</html>
