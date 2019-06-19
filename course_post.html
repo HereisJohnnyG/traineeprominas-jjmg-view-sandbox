@@ -28,6 +28,16 @@
           </ul>
         </div>
     </nav>
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="./index_course.html">Listar curso <span class="sr-only">(current)</span></a></li>
+          <li><a href="./course_post.html">Cadastrar novo curso</a></li>
+          <li><a href="./course_put.html">Alterar dados do curso</a></li>
+        </ul>
+      </div>
+  
+      <div class="col-sm-9 col-md-10 col-md-offset-2 main">
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Digite o seu nome">
@@ -48,6 +58,7 @@
           </select> -->
         </div>
         <button type="submit" class="btn btn-primary" onclick="postIt()">Submit</button>
+        </div></div>
  
     <script src="course_crud.js"></script>
 </body>

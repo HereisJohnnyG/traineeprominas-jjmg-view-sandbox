@@ -26,12 +26,24 @@
           </ul>
         </div>
     </nav>
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="./index_student.html">Listar estudantes <span class="sr-only">(current)</span></a></li>
+          <li><a href="./student_post.html">Cadastrar novo estudante</a></li>
+          <li><a href="./student_put.html">Alterar dados do estudante</a></li>
+        </ul>
+      </div>
+  
+      <div class="col-sm-9 col-md-10 col-md-offset-2 main">
     <div>
         <label for="nome">Digite o ID do Estudante:</label>
         <input type="text" class="form-inline" id="id" aria-describedby="emailHelp" placeholder="ID do estudante">
         <button type="submit" class="btn btn-primary" onclick="getOne()">Pesquisar</button>
   </div>
       <div id="root"></div>
+      </div>
+      </div>
 
   <script src="student_crud.js"></script>
 </body>

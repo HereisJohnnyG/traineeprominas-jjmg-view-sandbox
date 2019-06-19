@@ -26,12 +26,24 @@
           </ul>
         </div>
     </nav>
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="./index_teacher.html">Listar professores <span class="sr-only">(current)</span></a></li>
+          <li><a href="./teacher_post.html">Cadastrar novo professor</a></li>
+          <li><a href="./teacher_put.html">Alterar dados do professor</a></li>
+        </ul>
+      </div>
+  
+      <div class="col-sm-9 col-md-10 col-md-offset-2 main">
     <div>
         <label for="nome">Digite o ID do Professor:</label>
         <input type="text" class="form-inline" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
         <button type="submit" class="btn btn-primary" onclick="getOne()">Pesquisar</button>
   </div>
       <div id="root"></div>
+      </div>
+      </div>
 
   <script src="teacher_crud.js"></script>
 </body>

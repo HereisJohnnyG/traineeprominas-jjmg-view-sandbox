@@ -27,28 +27,39 @@
                 </ul>
             </div>
     </nav>
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="./index_course.html">Listar curso <span class="sr-only">(current)</span></a></li>
+            <li><a href="./course_post.html">Cadastrar novo curso</a></li>
+            <li><a href="./course_put.html">Alterar dados do curso</a></li>
+          </ul>
+        </div>
+    
+        <div class="col-sm-9 col-md-10 col-md-offset-2 main">
     <div>
         <label for="nome">Digite o ID do Curso:</label>
-        <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+        <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="ID do curso">
         <button type="submit" class="btn btn-primary" onclick="getCourse()">Pesquisar</button>
     </div>
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="">
     </div>
     <div class="form-group">
         <label for="Semestre">Semestre</label>
-        <input type="text" class="form-control" id="period" placeholder="Sobrenome">
+        <input type="text" class="form-control" id="period" placeholder="">
     </div>
     <div class="form-group">
         <label for="Cidade">Cidade</label>
-        <input type="text" class="form-control" id="city" placeholder="Sobrenome">
+        <input type="text" class="form-control" id="city" placeholder="">
     </div>
     <div id="selection">
         
     </div>
     <button type="submit" class="btn btn-primary" id="push" onclick="updateCourse()">Submit</button>
     <script src="course_crud.js"></script>
+    </div></div>
 </body>
 
 </html>

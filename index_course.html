@@ -26,13 +26,23 @@
           </ul>
         </div>
     </nav>
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="./course_user.html">Listar cursos <span class="sr-only">(current)</span></a></li>
+          <li><a href="./course_post.html">Cadastrar novo curso</a></li>
+          <li><a href="./course_put.html">Alterar dados do curso</a></li>
+        </ul>
+      </div>
+  
+      <div class="col-sm-9 col-md-10 col-md-offset-2 main">
     <div>
         <label for="nome">Digite o ID do Curso:</label>
         <input type="text" class="form-inline" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
         <button type="submit" class="btn btn-primary" onclick="getOne()">Pesquisar</button>
   </div>
       <div id="root"></div>
-
+</div></div>
   <script src="course_crud.js"></script>
 </body>
 
