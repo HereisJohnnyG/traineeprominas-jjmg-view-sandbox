@@ -98,7 +98,7 @@ $("#root").ready(
 
 
 function postIt(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
 
     var data = {};
     data.name = document.getElementById("name").value;
@@ -123,7 +123,7 @@ function postIt(){
 }
 
 function getCourse(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var xhr  = new XMLHttpRequest()
     id = document.getElementById("id").value;
     xhr.open('GET', url+'/'+id, true)
@@ -153,7 +153,7 @@ function getCourse(){
 }
 
 function updateCourse(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
@@ -178,7 +178,7 @@ function updateCourse(){
 }
 
 function deleteCourse(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var xhr = new XMLHttpRequest();
     id = document.getElementById("deleter").value;
     xhr.open("DELETE", url+'/'+id, true);
@@ -196,7 +196,7 @@ function deleteCourse(){
 
 
 function getOne(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var xhr  = new XMLHttpRequest()
     const app = document.getElementById('root');
     while (app.firstChild) {
@@ -211,12 +211,12 @@ function getOne(){
     xhr.open('GET', url+'/'+id, true);
     
     xhr.onload = function () {
-        var data = JSON.parse(this.response);
-        console.log(data);
+        var course = JSON.parse(this.response);
 	    if (xhr.readyState == 4 && xhr.status == "200") {
             app.appendChild(container);
             app.appendChild(table);
-		    data.forEach(course => {const card = document.createElement('thead');
+            
+            const card = document.createElement('thead');
                 
             const id = document.createElement('th');
             id.textContent = course.id;
@@ -262,7 +262,6 @@ function getOne(){
 
 
           
-              });
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';
