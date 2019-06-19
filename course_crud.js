@@ -1,5 +1,5 @@
 $('#root').ready(function(){
-        text = "<select id='teacher' class='selectpicker' multiple data-live-search='true'>"
+        text = "<select id='teacher' class='selectpicker' multiple='multiple' data-live-search='true'>"
         var request = new XMLHttpRequest();
         request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/teacher', true);
         request.onload = function () {
@@ -97,14 +97,13 @@ $("#root").ready(
 
 
 function postIt(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
 
     var data = {};
     data.name = document.getElementById("name").value;
     data.period  = document.getElementById("period").value;
-    data.city = document.getElementById("city").value
-    data.teacher.push($("teacher"));
-    data.teacher = document.getElementById("teacher").value;
+    data.city = document.getElementById("city").value;
+    data.teacher = $('#teacher').val();
     var json = JSON.stringify(data);
 
     var xhr = new XMLHttpRequest();
@@ -122,42 +121,51 @@ function postIt(){
 }
 
 function getCourse(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var xhr  = new XMLHttpRequest()
     id = document.getElementById("id").value;
     xhr.open('GET', url+'/'+id, true)
     xhr.onload = function () {
-        var data = JSON.parse(this.response);
-        console.log(data);
-	    if (xhr.readyState == 4 && xhr.status == "200") {
-		    data.forEach(course => {
+        var course = JSON.parse(this.response);
+        if (xhr.readyState == 4 && xhr.status == "200") {
 
-                document.getElementById('push').setAttribute('value', course.id);
+            document.getElementById('push').setAttribute('value', course.id);
 
 
-                document.getElementById("name").value = course.name
-                document.getElementById("period").value = course.period
-                const name = document.createElement('th');
-                name.textContent = course.name;
-                document.getElementById("city").value = course.city;
-          
-              });
-            } else {
-              const errorMessage = document.createElement('marquee');
-              errorMessage.textContent = 'Ocorreu um erro no sistema';
-              alert(errorMessage);
+            document.getElementById("name").value = course.name
+            document.getElementById("period").value = course.period
+            const name = document.createElement('th');
+            name.textContent = course.name;
+            document.getElementById("city").value = course.city;
+            teacher_var = course.teacher.map(value => teacher_var = value.id)
+            var select = document.getElementById( 'teacher' );
+
+            for ( var i = 0, l = select.options.length, o; i < l; i++ )
+            {
+                o = select.options[i];
+                if ( teacher_var.indexOf( parseInt(o.value) ) != -1 ){
+                    o.selected = true;
+                }
             }
+
+
+        } else {
+            const errorMessage = document.createElement('marquee');
+            errorMessage.textContent = 'Ocorreu um erro no sistema';
+            alert(errorMessage);
+        }
     }
     xhr.send(null);
 }
 
 function updateCourse(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
     data.period  = document.getElementById("period").value;
     data.city = document.getElementById("city").value;
+    data.teacher = $('#teacher').val();
     var json = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", url+'/'+id, true);
@@ -177,7 +185,7 @@ function updateCourse(){
 }
 
 function deleteCourse(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var xhr = new XMLHttpRequest();
     id = document.getElementById("deleter").value;
     xhr.open("DELETE", url+'/'+id, true);
@@ -195,7 +203,7 @@ function deleteCourse(){
 
 
 function getOne(){
-    var url  = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/course";
+    var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course";
     var xhr  = new XMLHttpRequest()
     const app = document.getElementById('root');
     while (app.firstChild) {
@@ -210,12 +218,12 @@ function getOne(){
     xhr.open('GET', url+'/'+id, true);
     
     xhr.onload = function () {
-        var data = JSON.parse(this.response);
-        console.log(data);
+        var course = JSON.parse(this.response);
 	    if (xhr.readyState == 4 && xhr.status == "200") {
             app.appendChild(container);
             app.appendChild(table);
-		    data.forEach(course => {const card = document.createElement('thead');
+            
+            const card = document.createElement('thead');
                 
             const id = document.createElement('th');
             id.textContent = course.id;
@@ -261,7 +269,6 @@ function getOne(){
 
 
           
-              });
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';

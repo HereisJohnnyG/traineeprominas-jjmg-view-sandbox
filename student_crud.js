@@ -1,3 +1,24 @@
+$('#selection').ready(
+    function(){
+        text = "<select id='course' class='selectpicker' data-live-search='true'>"
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/course', true);
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            if (request.status >= 200 && request.status < 400) {
+                
+                data.forEach(course => {
+                    text+= "<option value='"+course.id+"'>"+course.name+"</option>";
+                });
+                text+="</select>";
+                
+                document.getElementById("selection").innerHTML += text;
+            }
+            
+        }
+        request.send();
+    }
+);
 $("#root").ready(
     function(){
         const app = document.getElementById('root');
@@ -18,8 +39,10 @@ $("#root").ready(
         var request = new XMLHttpRequest();
         request.open('GET', 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/student', true);
         request.onload = function () {
-          var data = JSON.parse(this.response);
-          if (request.status >= 200 && request.status < 400) {
+        
+          // Begin accessing JSON data here
+        var data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
             app.appendChild(container);
             app.appendChild(table);
             data.forEach(student => {
@@ -43,15 +66,17 @@ $("#root").ready(
 
                 const course = document.createElement('th');
                 course.textContent = student.course.name;
-                console.log(student.course.name);
                 course.setAttribute('scope', 'col');
+
+
             
                 container.appendChild(card);
                 card.appendChild(id);
                 card.appendChild(name);
-                card.appendChild(age);
                 card.appendChild(lastname);
+                card.appendChild(age);
                 card.appendChild(course);
+                
         
             });
             } else {
@@ -66,16 +91,14 @@ $("#root").ready(
 
 
 function postIt(){
-    var url = "https://traineeprominas-jjmg-sandbox.herokuapp.com/api/v1/student";
+    var url = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/student";
 
     var data = {};
     data.name = document.getElementById("name").value;
-    data.period  = document.getElementById("period").value;
-    if(document.getElementById("lastname").checked){
-        data.lastname = true;
-    }else{
-        data.lastname = false;
-    }
+    data.lastName  = document.getElementById("lastname").value;
+    data.age  = document.getElementById("age").value;
+    data.course  = document.getElementById("course").value;
+
     var json = JSON.stringify(data);
 
     var xhr = new XMLHttpRequest();
@@ -92,32 +115,29 @@ function postIt(){
     }
 }
 
-function getstudent(){
+function getStudent(){
     var url  = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/student";
     var xhr  = new XMLHttpRequest()
     id = document.getElementById("id").value;
     xhr.open('GET', url+'/'+id, true)
     xhr.onload = function () {
-        var data = JSON.parse(this.response);
-        console.log(data);
+        var student = JSON.parse(this.response);
 	    if (xhr.readyState == 4 && xhr.status == "200") {
-		    data.forEach(student => {
+		   
 
                 document.getElementById('push').setAttribute('value', student.id);
                 document.getElementById("name").value = student.name
-                document.getElementById("lastname").value = student.lastName;
-                const name = document.createElement('th');
-                name.textContent = student.name;
+                document.getElementById("lastname").value = student.lastName
                 document.getElementById("age").value = student.age;
-
-              });
+                document.getElementById("course").value = student.course.id;
+          
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';
               alert(errorMessage);
             }
     }
-    xhr.send(null);
+    xhr.send();
 }
 
 function updatestudent(){
@@ -125,12 +145,10 @@ function updatestudent(){
     var id = document.getElementById("push").value
     var data = {};
     data.name = document.getElementById("name").value;
-    data.period  = document.getElementById("period").value;
-    if(document.getElementById("lastname").checked){
-        data.lastname = true;
-    }else{
-        data.lastname = false;
-    }
+    data.lastName  = document.getElementById("lastname").value;
+    data.age  = document.getElementById("age").value;
+    data.course  = document.getElementById("course").value;
+    
     var json = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", url+'/'+id, true);
@@ -187,7 +205,9 @@ function getOne(){
 	    if (xhr.readyState == 4 && xhr.status == "200") {
             app.appendChild(container);
             app.appendChild(table);
-		    const card = document.createElement('thead');
+            
+            
+            const card = document.createElement('thead');
                 
             const id = document.createElement('th');
             id.textContent = student.id;
@@ -197,9 +217,9 @@ function getOne(){
             name.textContent = student.name;
             name.setAttribute('scope', 'col');
     
-            const period = document.createElement('th');
-            period.textContent = student.period;
-            period.setAttribute('scope', 'col');
+            const age = document.createElement('th');
+            age.textContent = student.age;
+            age.setAttribute('scope', 'col');
     
             const lastname = document.createElement('th');
             lastname.textContent = student.lastName;
@@ -207,7 +227,6 @@ function getOne(){
 
             const course = document.createElement('th');
             course.textContent = student.course.name;
-            console.log(student.course.name);
             course.setAttribute('scope', 'col');
 
             const deleter = document.createElement('button');
@@ -220,11 +239,10 @@ function getOne(){
             container.appendChild(card);
             card.appendChild(id);
             card.appendChild(name);
-            card.appendChild(period);
             card.appendChild(lastname);
+            card.appendChild(age);
             card.appendChild(course);
             card.appendChild(deleter);
-
             } else {
               const errorMessage = document.createElement('marquee');
               errorMessage.textContent = 'Ocorreu um erro no sistema';

@@ -19,17 +19,17 @@
         <div class="container-fluid">
           
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./index_user.html">User</a></li>
+            <li><a href="./index_user.html">User</a></li>
             <li><a href="./index_teacher.html">Teacher</a></li>
             <li><a href="./index_course.html">Course</a></li>
-            <li><a href="./index_student.html">Student</a></li>
+            <li class="active"><a href="./index_student.html">Student</a></li>
           </ul>
         </div>
     </nav>
     <div>
-        <label for="nome">Digite o ID do Curso:</label>
-        <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
-        <button type="submit" class="btn btn-primary" onclick="getOne()">Submit</button>
+        <label for="nome">Digite o ID do Estudante:</label>
+        <input type="text" class="form-inline" id="id" aria-describedby="emailHelp" placeholder="ID do estudante">
+        <button type="submit" class="btn btn-primary" onclick="getOne()">Pesquisar</button>
   </div>
       <div id="root"></div>
 

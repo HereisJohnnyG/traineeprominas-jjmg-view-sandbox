@@ -28,27 +28,31 @@
             </div>
     </nav>
     <div>
-        <label for="nome">Digite o ID do Curso:</label>
+        <label for="nome">Digite o ID do Estudante:</label>
         <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Digite o seu nome">
-        <button type="submit" class="btn btn-primary" onclick="getCourse()">Pesquisar</button>
+        <button type="submit" class="btn btn-primary" onclick="getStudent()">Submit</button>
     </div>
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Digite o seu nome">
-    </div>
-    <div class="form-group">
-        <label for="Semestre">Semestre</label>
-        <input type="text" class="form-control" id="period" placeholder="Sobrenome">
-    </div>
-    <div class="form-group">
-        <label for="Cidade">Cidade</label>
-        <input type="text" class="form-control" id="city" placeholder="Sobrenome">
-    </div>
-    <div id="selection">
-        
-    </div>
-    <button type="submit" class="btn btn-primary" id="push" onclick="updateCourse()">Submit</button>
-    <script src="course_crud.js"></script>
+      </div>
+      <div class="form-group">
+        <label for="surname">Sobrenome</label>
+        <input type="text" class="form-control" id="lastname" placeholder="Semestre">
+      </div>
+      <div class="form-group">
+          <label for="Cidade">Idade</label>
+          <input type="number" class="form-control" id="age" placeholder="Cidade">
+      </div>
+      <div id="selection">
+      <!-- <select class="selectpicker" multiple data-live-search="true">
+          <option>Mustard</option>
+          <option>Ketchup</option>
+          <option>Relish</option>
+        </select> -->
+      </div>
+      <button type="submit" class="btn btn-primary" id="push"  onclick="updatestudent()">Submit</button>
+    <script src="student_crud.js"></script>
 </body>
 
 </html>
