@@ -26,6 +26,11 @@ const routes: Routes = [
     component: UserUpdateComponent,
     data: { title: 'Editar o Produto' }
   },
+  {
+    path: 'usuario-delete/:id',
+    component: UserUpdateComponent,
+    data: { title: 'Deletar o Produto' }
+  },
   { path: '',
     redirectTo: '/usuario',
     pathMatch: 'full'

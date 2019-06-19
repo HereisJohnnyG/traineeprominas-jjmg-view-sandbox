@@ -28,7 +28,7 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    const url = `${apiUrl}JSON/user${id}`;
+    const url = `${apiUrl}JSON/user/${id}`;
     return this.http.get<User>(url).pipe(
       tap(_ => console.log(`leu o usuário id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
@@ -43,7 +43,7 @@ export class UserService {
   }
 
   putUser(id, user): Observable<any> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}user/${id}`;
     return this.http.put(url, user, httpOptions).pipe(
       tap(_ => console.log(`atualiza o usuário com id=${id}`)),
       catchError(this.handleError<any>('updateUser'))

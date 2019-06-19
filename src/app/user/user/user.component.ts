@@ -9,7 +9,7 @@ import { User } from 'src/model/user';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  displayedColumns: string[] = [ 'id', 'name', 'lastName', 'profile', 'action', 'exclude'];
+  displayedColumns: string[] = [ 'id', 'name', 'lastName', 'profile', 'action', 'update', 'exclude'];
   dataSource: User[];
   isLoadingResults: boolean;
   constructor(private _api: UserService) { }
