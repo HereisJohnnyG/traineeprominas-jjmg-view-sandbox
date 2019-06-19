@@ -133,6 +133,7 @@ function deleteUser(){
     id = document.getElementById("deleter").value;
     xhr.open("DELETE", url+'/'+id, true);
     xhr.onload = function () {
+        alert(xhr.responseText);
         var users = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.table(users);
@@ -161,6 +162,7 @@ function updateUser(){
     xhr.open("PUT", url+'/'+id, true);
     xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
     xhr.onload = function () {
+        alert(xhr.responseText);
         var users = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.table(users);
