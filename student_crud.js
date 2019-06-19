@@ -189,7 +189,7 @@ function getOne(){
     while (app.firstChild) {
         app.removeChild(app.firstChild);
     }
-    const container = document.createElement('div');
+    const container = document.createElement('table');
     container.setAttribute('class', 'table');
     const table = document.createElement('table');
     container.setAttribute('class', 'table');
