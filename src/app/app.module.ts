@@ -12,12 +12,15 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule,
   MatListModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatTableModule, MatToolbarModule } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { TeacherComponent } from './teacher/teacher/teacher.component';
 import { TeacherAddComponent } from './teacher/teacher-add/teacher-add.component';
 import { TeacherDetailComponent } from './teacher/teacher-detail/teacher-detail.component';
 import { TeacherUpdateComponent } from './teacher/teacher-update/teacher-update.component';
+import { CourseComponent } from './course/course/course.component';
+import { CourseAddComponent } from './course/course-add/course-add.component';
+import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { CourseUpdateComponent } from './course/course-update/course-update.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,11 @@ import { TeacherUpdateComponent } from './teacher/teacher-update/teacher-update.
     TeacherComponent,
     TeacherAddComponent,
     TeacherDetailComponent,
-    TeacherUpdateComponent
+    TeacherUpdateComponent,
+    CourseComponent,
+    CourseAddComponent,
+    CourseDetailComponent,
+    CourseUpdateComponent
   ],
   imports: [
     BrowserModule,

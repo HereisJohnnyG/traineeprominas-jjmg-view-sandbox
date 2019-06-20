@@ -8,6 +8,10 @@ import { TeacherComponent} from './teacher/teacher/teacher.component';
 import { TeacherAddComponent } from './teacher/teacher-add/teacher-add.component';
 import { TeacherDetailComponent } from './teacher/teacher-detail/teacher-detail.component';
 import { TeacherUpdateComponent } from './teacher/teacher-update/teacher-update.component';
+import { CourseComponent } from './course/course/course.component';
+import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { CourseAddComponent } from './course/course-add/course-add.component';
+import { CourseUpdateComponent } from './course/course-update/course-update.component';
 
 
 const routes: Routes = [
@@ -72,6 +76,38 @@ const routes: Routes = [
   },
   { path: '',
     redirectTo: '/professor',
+    pathMatch: 'full'
+  },
+
+  // COURSE
+
+  {
+    path: 'curso',
+    component: CourseComponent,
+    data: { title: 'Lista de cursos' }
+  },
+  {
+    path: 'curso/:id',
+    component: CourseDetailComponent,
+    data: { title: 'Detalhe do curso' }
+  },
+  {
+    path: 'curso-cadastro',
+    component: CourseAddComponent,
+    data: { title: 'Adicionar curso' }
+  },
+  {
+    path: 'curso-editar/:id',
+    component: CourseUpdateComponent,
+    data: { title: 'Editar o curso' }
+  },
+  {
+    path: 'curso-delete/:id',
+    component: CourseUpdateComponent,
+    data: { title: 'Deletar o curso' }
+  },
+  { path: '',
+    redirectTo: '/curso',
     pathMatch: 'full'
   }
 ];
