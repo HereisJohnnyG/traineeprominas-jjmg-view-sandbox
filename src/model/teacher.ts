@@ -1,6 +1,6 @@
-export class User {
+export class Teacher {
     id: number;
     name: string;
     lastName: string;
-    profile: string;
+    phd: boolean;
 }

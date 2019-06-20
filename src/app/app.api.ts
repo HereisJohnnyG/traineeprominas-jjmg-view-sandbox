@@ -1,3 +1,3 @@
-import {environment} from '../environments/environment'
+import {environment} from '../environments/environment';
 
-export const apiUrl = environment.api
+export const apiUrl = environment.api;

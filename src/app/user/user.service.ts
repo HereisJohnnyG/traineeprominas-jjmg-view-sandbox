@@ -9,7 +9,7 @@ const httpOptions = {
 };
 
 
-import {apiUrl} from '../app.api'
+import {apiUrl} from '../app.api';
 
 
 @Injectable({
@@ -37,7 +37,7 @@ export class UserService {
 
   postUser(user): Observable<User> {
     return this.http.post<User>(`${apiUrl}user`, user, httpOptions).pipe(
-      tap((user: User) => console.log(`adicionou o usuário com w/ id=${user.id}`)),
+      tap((user1: User) => console.log(`adicionou o usuário com w/ id=${user1.id}`)),
       catchError(this.handleError<User>('postUser'))
     );
   }

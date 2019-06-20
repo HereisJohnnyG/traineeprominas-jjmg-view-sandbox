@@ -1,0 +1,16 @@
+<div>
+  <h3>Adicionar Novo Professor</h3>
+</div>
+<form class="form-width example-container" [formGroup]="teacherForm" (ngSubmit)="addTeacher(teacherForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Nome do professor" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="phd" placeholder="Possui PHD" formControlName="phd">
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!teacherForm.valid" mat-button color="primary" >Adicionar</button>
+</form>

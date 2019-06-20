@@ -1,37 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
-
+import { TeacherService } from '../teacher.service';
 
 @Component({
-  selector: 'app-user-add',
-  templateUrl: './user-add.component.html',
-  styleUrls: ['./user-add.component.css']
+  selector: 'app-teacher-add',
+  templateUrl: './teacher-add.component.html',
+  styleUrls: ['./teacher-add.component.css']
 })
+export class TeacherAddComponent implements OnInit {
 
-export class UserAddComponent implements OnInit {
 
-  productForm: FormGroup;
+  teacherForm: FormGroup;
   isLoadingResults = false;
-  constructor(private router: Router, private api: UserService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private api: TeacherService, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
-    this.productForm = this.formBuilder.group({
+    this.teacherForm = this.formBuilder.group({
       name : [null, Validators.required],
       lastName : [null, [Validators.required]],
-      profile : [null, Validators.required]
+      phd : [null, Validators.required]
     });
   }
 
-  addProduto(form: NgForm) {
+  addTeacher(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.postUser(form)
+    this.api.postTeacher(form)
       .subscribe(res => {
           const id = res.id;
           this.isLoadingResults = false;
-          this.router.navigate(['/usuario']);
+          this.router.navigate(['/professor']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
