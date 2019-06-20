@@ -11,13 +11,13 @@ import { User } from 'src/model/user';
 export class UserDetailComponent implements OnInit {
   user: User = { id: null, name: '', lastName: '', profile: '' };
   isLoadingResults = true;
-  
+
   constructor(private router: Router, private route: ActivatedRoute, private api: UserService) {}
 
   ngOnInit() {
-    this.getUser(this.user.snapshot.params['id']);
+    this.getUser(this.route.snapshot.params.id);
   }
-  
+
   getUser(id) {
     this.api.getUser(id)
       .subscribe(data => {
@@ -26,12 +26,12 @@ export class UserDetailComponent implements OnInit {
         this.isLoadingResults = false;
       });
   }
-  deleteProduto(id) {
+  deleteUser(id) {
     this.isLoadingResults = true;
-    this.api.deleteProduto(id)
+    this.api.deleteUser(id)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/produtos']);
+          this.router.navigate(['/usuario']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;

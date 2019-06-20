@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from 'src/model/user';
 
@@ -12,10 +12,10 @@ export class UserComponent implements OnInit {
   displayedColumns: string[] = [ 'id', 'name', 'lastName', 'profile', 'action', 'update', 'exclude'];
   dataSource: User[];
   isLoadingResults: boolean;
-  constructor(private _api: UserService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: UserService) { }
 
   ngOnInit() {
-      this._api.getUsers()
+      this.api.getUsers()
       .subscribe(res => {
         this.dataSource = res;
         console.log(this.dataSource);
@@ -25,4 +25,18 @@ export class UserComponent implements OnInit {
         this.isLoadingResults = false;
       });
   }
+
+  deleteUser(id) {
+    this.isLoadingResults = true;
+    this.api.deleteUser(id)
+      .subscribe(res => {
+          this.isLoadingResults = false;
+          this.router.navigate(['/usuario']);
+        }, (err) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        }
+      );
+  }
+
 }

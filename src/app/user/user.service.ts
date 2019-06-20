@@ -51,7 +51,7 @@ export class UserService {
   }
 
   deleteUser(id): Observable<User> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}user/${id}`;
     return this.http.delete<User>(url, httpOptions).pipe(
       tap(_ => console.log(`remove o usuário com id=${id}`)),
       catchError(this.handleError<User>('deleteUser'))

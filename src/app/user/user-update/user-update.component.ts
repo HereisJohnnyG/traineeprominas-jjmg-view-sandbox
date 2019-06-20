@@ -10,20 +10,20 @@ import { UserService } from '../user.service';
 })
 export class UserUpdateComponent implements OnInit {
     userForm: FormGroup;
-    id: number = null;
-    name: FormGroup;
-    lastName: String = '';
-    profile: String = '';
+    id: number;
+    name: '';
+    lastName = '';
+    profile = '';
     isLoadingResults = false;
 
     constructor(private router: Router, private route: ActivatedRoute, private api: UserService, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
-      this.getUser(this.route.snapshot.params['id']);
+      this.getUser(this.route.snapshot.params.id);
       this.userForm = this.formBuilder.group({
-        'name' : [null, Validators.required],
-        'lastName' : [null, Validators.required],
-        'profile' : [null, Validators.required]
+        name : [null, Validators.required],
+        lastName : [null, Validators.required],
+        profile : [null, Validators.required]
       });
     }
     getUser(id) {
@@ -36,13 +36,13 @@ export class UserUpdateComponent implements OnInit {
         });
       });
     }
-  
+
     putUser(form: NgForm) {
     this.isLoadingResults = true;
     this.api.putUser(this.id, form)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/getUsers/' + this.id]);
+          this.router.navigate(['/usuario/' + this.id]);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
