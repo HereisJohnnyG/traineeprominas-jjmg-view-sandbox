@@ -27,7 +27,7 @@ export class CourseComponent implements OnInit {
       });
   }
 
-  deleteTeacher(id) {
+  deleteCourse(id) {
     this.isLoadingResults = true;
     this.api.deleteCourse(id)
       .subscribe(res => {

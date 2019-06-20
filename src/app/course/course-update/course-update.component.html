@@ -1,3 +1,23 @@
-<p>
-  course-update works!
-</p>
+<div>
+  <h3>Editar Curso</h3>
+</div>
+
+<form class="form-width example-container" [formGroup]="courseForm" (ngSubmit)="putCourse(courseForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Nome do curso" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="period" placeholder="Periodo" formControlName="period">
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="city" placeholder="cidade" formControlName="city">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label >Professores</mat-label>
+    <mat-select name="teacher" formControlName="teacher" multiple>
+    <mat-option *ngFor="let element of teacher" [value]="element.id">{{element.name}} {{element.lastName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!courseForm.valid" mat-button color="primary" >Atualizar</button>
+</form>

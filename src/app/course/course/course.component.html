@@ -30,8 +30,8 @@
 
   <ng-container matColumnDef="teacher">
     <th mat-header-cell *matHeaderCellDef> Professores </th>
-    <td mat-cell *matCellDef="let row">
-        <mat-list-item *ngFor="let teach of element" >{{teach.name}}</mat-list-item>
+    <td mat-cell *matCellDef="let element">
+        <mat-list-item *ngFor="let prof of element.teacher" >{{prof.name}} </mat-list-item>
     </td>
   </ng-container>
 

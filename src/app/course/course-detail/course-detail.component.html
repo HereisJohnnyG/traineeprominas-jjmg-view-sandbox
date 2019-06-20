@@ -1,3 +1,28 @@
-<p>
-  course-detail works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <button mat-flat-button color="accent" [routerLink]="['/professor']"><mat-icon>Listar</mat-icon> Voltar</button>
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{course.name}}</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt>Curso:</dt>
+        <dd>{{course.period}}</dd>
+        <dt>Período:</dt>
+        <dd>{{course.city}}</dd>
+        <dt>Professores:</dt>
+        <dd *ngFor="let element of course.teacher">{{element.name}}{{element.lastName}}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" class="teste" [routerLink]="['/curso-editar', course.id]"><mat-icon>edit</mat-icon> Editar</button>
+      <button mat-flat-button color="warn" (click)="deletecourse(course.id)"><mat-icon>delete</mat-icon> Excluir</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
