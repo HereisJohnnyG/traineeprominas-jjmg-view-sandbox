@@ -1,3 +1,17 @@
-<p>
-  teacher-update works!
-</p>
+<div>
+  <h3>Editar Produto</h3>
+</div>
+
+<form class="example-container" [formGroup]="teacherForm" (ngSubmit)="putTeacher(teacherForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="nome" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="lastName" placeholder="sobrenome" formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="phd" placeholder="phd" formControlName="phd">
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!teacherForm.valid" mat-button color="primary" >Editar</button>
+</form>
