@@ -4,11 +4,11 @@
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
   <div class="button-row">
-    <button mat-flat-button color="accent" [routerLink]="['/estudante']"><mat-icon>Listar</mat-icon> Voltar</button>
+    <button mat-flat-button color="accent" [routerLink]="['/estudante']"><mat-icon>arrow_back</mat-icon> Voltar</button>
   </div>
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title><h2>{{student.name}}</h2></mat-card-title>
+      <mat-card-title><h2>{{student.name}} {{student.lastName}}</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <dl>

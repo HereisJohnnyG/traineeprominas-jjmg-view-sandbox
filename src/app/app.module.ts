@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule, MatChipsModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user/user.component';
@@ -67,7 +67,8 @@ import { StudentUpdateComponent } from './student/student-update/student-update.
     MatToolbarModule,
     MatPaginatorModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

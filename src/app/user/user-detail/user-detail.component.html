@@ -4,19 +4,18 @@
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
   <div class="button-row">
-    <button mat-flat-button color="accent" [routerLink]="['/usuario']"><mat-icon>Listar</mat-icon> Voltar</button>
+    <button mat-flat-button color="accent" [routerLink]="['/usuario']"><mat-icon>arrow_back</mat-icon> Voltar</button>
   </div>
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title><h2>{{user.name}}</h2></mat-card-title>
-      <mat-card-subtitle>{{user.lastName}}</mat-card-subtitle>
+      <mat-card-title><h2>{{user.name}} {{user.lastName}}</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <dl>
         <dt>Usuário: {{user.name}} {{user.lastName}}</dt>
         <dd></dd>
-        <dt></dt>
-        <dd>Perfil: {{user.profile}}</dd>
+        <dt>Perfil: {{user.profile}}</dt>
+        <dd></dd>
       </dl>
     </mat-card-content>
     <mat-card-actions>

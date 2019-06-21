@@ -34,6 +34,11 @@ export class TeacherComponent implements OnInit {
       });
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  
   deleteTeacher(id) {
     this.isLoadingResults = true;
     this.api.deleteTeacher(id)

@@ -1,23 +1,24 @@
 <div class="example-container mat-elevation-z8">
   <div class="example-loading-shade"
        *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
   <div class="button-row">
-    <button mat-flat-button color="accent" [routerLink]="['/curso']"><mat-icon>Listar</mat-icon> Voltar</button>
-  </div>
+      <button mat-flat-button color="accent" [routerLink]="['/curso']"><mat-icon>arrow_back</mat-icon> Voltar</button>
+    </div>
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title><h2>{{course.name}}</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <dl>
-        <dt>Curso:</dt>
-        <dd>{{course.period}}</dd>
-        <dt>Período:</dt>
-        <dd>{{course.city}}</dd>
+        <dt>Curso: {{course.name}}</dt>
+        <dt>Período: {{course.period}}</dt>
+        <dt>Cidade: {{course.city}}</dt>
         <dt>Professores:</dt>
-        <dd *ngFor="let element of course.teacher">{{element.name}}{{element.lastName}}</dd>
+        <mat-chip-list>
+            <mat-chip *ngFor="let element of course.teacher" [routerLink]="['/professor/', element.id]"> {{element.name}} {{element.lastName}}</mat-chip>
+        </mat-chip-list>
       </dl>
     </mat-card-content>
     <mat-card-actions>
