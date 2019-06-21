@@ -1,5 +1,5 @@
 <div>
-  <h3>Editar Produto</h3>
+  <h3>Editar Usuário</h3>
 </div>
 
 <form class="example-container" [formGroup]="userForm" (ngSubmit)="putUser(userForm.value)">
@@ -9,9 +9,10 @@
   <mat-form-field>
     <input  matInput name="lastName" placeholder="sobrenome" formControlName="lastName">
   </mat-form-field>
-  <mat-form-field>
-    <input matInput name="profile" placeholder="perfil" formControlName="profile">
-  </mat-form-field>
 
+  <mat-radio-group aria-label="Select an option" formControlName="profile">
+    <mat-radio-button name="profile" value="admin">Administrador</mat-radio-button>
+    <mat-radio-button name="profile" value="guess">Visitante</mat-radio-button>
+  </mat-radio-group>
   <button type="submit" [disabled]="!userForm.valid" mat-button color="primary" >Editar</button>
 </form>

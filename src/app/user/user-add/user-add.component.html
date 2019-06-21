@@ -8,9 +8,10 @@
   <mat-form-field>
     <textarea  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName"></textarea>
   </mat-form-field>
-  <mat-form-field>
-    <input matInput name="profile" placeholder="Perfil" formControlName="profile">
-  </mat-form-field>
+  <mat-radio-group aria-label="Select an option" formControlName="profile">
+    <mat-radio-button  name="profile" value="admin">Administrador</mat-radio-button>
+    <mat-radio-button name="profile" value="guess">Visitante</mat-radio-button>
+  </mat-radio-group>
 
   <button type="submit" [disabled]="!productForm.valid" mat-button color="primary" >Adicionar</button>
 </form>

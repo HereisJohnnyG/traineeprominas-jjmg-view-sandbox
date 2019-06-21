@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { MatPaginatorModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user/user.component';
@@ -9,7 +9,8 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule,
-  MatListModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatTableModule, MatToolbarModule } from '@angular/material';
+  MatListModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatTableModule,
+  MatToolbarModule, MatRadioModule  } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -63,7 +64,9 @@ import { StudentUpdateComponent } from './student/student-update/student-update.
     MatSelectModule,
     MatSidenavModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

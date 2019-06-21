@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from 'src/model/user';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-user',
@@ -10,18 +11,20 @@ import { User } from 'src/model/user';
 })
 export class UserComponent implements OnInit {
   displayedColumns: string[] = [ 'id', 'name', 'lastName', 'profile', 'action', 'update', 'exclude'];
-  dataSource: User[];
+  dataSource: MatTableDataSource<User>;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+
   isLoadingResults: boolean;
   constructor(private router: Router, private route: ActivatedRoute, private api: UserService) { }
 
   ngOnInit() {
-      this.api.getUsers()
+    this.api.getUsers()
       .subscribe(res => {
-        this.dataSource = res;
-        console.log(this.dataSource);
+        this.dataSource = new MatTableDataSource<User>(res);
+        this.dataSource.paginator = this.paginator;
         this.isLoadingResults = false;
       }, err => {
-        console.log(err);
         this.isLoadingResults = false;
       });
   }
@@ -33,7 +36,6 @@ export class UserComponent implements OnInit {
           this.isLoadingResults = false;
           this.router.navigate(['/usuario']);
         }, (err) => {
-          console.log(err);
           this.isLoadingResults = false;
         }
       );
