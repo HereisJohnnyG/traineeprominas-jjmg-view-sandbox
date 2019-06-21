@@ -1,0 +1,52 @@
+<div>
+  <h3>Lista de Cursos</h3>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-width mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+  <!-- Name Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  <!-- Lastname Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+  <!-- Weight Column -->
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef> Idade </th>
+    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="course">
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
+    <td mat-cell *matCellDef="let element"> {{element.course.name}} </td>
+  </ng-container>
+
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element"> <button mat-flat-button color="accent" routerLink="/estudante/{{element.id}}" selected>Detalhe</button></td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element"> <button mat-flat-button color="primary" routerLink="/estudante-editar/{{element.id}}" selected>Editar</button></td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="exclude">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td mat-cell *matCellDef="let element"> <button mat-flat-button color="warn" (click)="deleteStudent(element.id)" selected>Excluir</button></td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

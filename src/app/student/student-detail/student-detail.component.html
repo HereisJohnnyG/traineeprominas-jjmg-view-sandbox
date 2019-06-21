@@ -1,0 +1,25 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <button mat-flat-button color="accent" [routerLink]="['/estudante']"><mat-icon>Listar</mat-icon> Voltar</button>
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{student.name}}</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt>Estudante: {{student.name}} {{student.lastName}}</dt>
+        <dt>Idade: {{student.age}}</dt>
+        <dt>Curso: {{student.course.name}}</dt>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" class="teste" [routerLink]="['/estudante-editar', student.id]"><mat-icon>edit</mat-icon> Editar</button>
+      <button mat-flat-button color="warn" (click)="deletestudent(student.id)"><mat-icon>delete</mat-icon> Excluir</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

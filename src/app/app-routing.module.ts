@@ -12,6 +12,10 @@ import { CourseComponent } from './course/course/course.component';
 import { CourseDetailComponent } from './course/course-detail/course-detail.component';
 import { CourseAddComponent } from './course/course-add/course-add.component';
 import { CourseUpdateComponent } from './course/course-update/course-update.component';
+import { StudentComponent } from './student/student/student.component';
+import { StudentDetailComponent } from './student/student-detail/student-detail.component';
+import { StudentAddComponent } from './student/student-add/student-add.component';
+import { StudentUpdateComponent } from './student/student-update/student-update.component';
 
 
 const routes: Routes = [
@@ -104,6 +108,38 @@ const routes: Routes = [
   {
     path: 'curso-delete/:id',
     component: CourseUpdateComponent,
+    data: { title: 'Deletar o curso' }
+  },
+  { path: '',
+    redirectTo: '/curso',
+    pathMatch: 'full'
+  },
+
+  // Student
+
+  {
+    path: 'estudante',
+    component: StudentComponent,
+    data: { title: 'Lista de cursos' }
+  },
+  {
+    path: 'estudante/:id',
+    component: StudentDetailComponent,
+    data: { title: 'Detalhe do curso' }
+  },
+  {
+    path: 'estudante-cadastro',
+    component: StudentAddComponent,
+    data: { title: 'Adicionar curso' }
+  },
+  {
+    path: 'estudante-editar/:id',
+    component: StudentUpdateComponent,
+    data: { title: 'Editar o curso' }
+  },
+  {
+    path: 'estudante-delete/:id',
+    component: StudentUpdateComponent,
     data: { title: 'Deletar o curso' }
   },
   { path: '',
