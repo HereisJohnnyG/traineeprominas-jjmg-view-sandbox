@@ -10,7 +10,7 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule,
   MatListModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatTableModule,
-  MatToolbarModule, MatRadioModule  } from '@angular/material';
+  MatToolbarModule, MatRadioModule, MatCheckboxModule   } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -66,7 +66,8 @@ import { StudentUpdateComponent } from './student/student-update/student-update.
     MatTableModule,
     MatToolbarModule,
     MatPaginatorModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
