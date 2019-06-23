@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from '../course.service';
 import { Teacher } from 'src/model/teacher';
 import { TeacherService } from 'src/app/teacher/teacher.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-course-update',
@@ -21,8 +22,12 @@ export class CourseUpdateComponent implements OnInit {
   phd = false;
   isLoadingResults = false;
 
-  constructor(private router: Router, private route: ActivatedRoute,
-              private apiTeacher: TeacherService, private api: CourseService, private formBuilder: FormBuilder) { }
+  constructor(private snackBar: MatSnackBar,
+              private router: Router,
+              private route: ActivatedRoute,
+              private apiTeacher: TeacherService,
+              private api: CourseService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getTeacher();
@@ -46,12 +51,20 @@ export class CourseUpdateComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+
   putCourse(form: NgForm) {
   this.isLoadingResults = true;
   this.api.putCourse(this.id, form)
     .subscribe(res => {
-        this.isLoadingResults = false;
-        this.router.navigate(['/curso/' + this.id]);
+      this.openSnackBar('Curso editado com sucesso!', 'Ok');
+      this.isLoadingResults = false;
+      this.router.navigate(['/curso/' + this.id]);
       }, (err) => {
         console.log(err);
         this.isLoadingResults = false;

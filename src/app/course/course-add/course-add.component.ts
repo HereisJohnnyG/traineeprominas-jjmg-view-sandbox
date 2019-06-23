@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/teacher/teacher.service';
 import { Teacher } from 'src/model/teacher';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-course-add',
@@ -21,7 +22,11 @@ export class CourseAddComponent implements OnInit {
   teacher: Teacher[];
   isLoadingResults = false;
 
-  constructor(private router: Router, private apiTeacher: TeacherService, private api: CourseService, private formBuilder: FormBuilder) { }
+  constructor(private snackBar: MatSnackBar,
+              private router: Router,
+              private apiTeacher: TeacherService,
+              private api: CourseService,
+              private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
@@ -51,16 +56,23 @@ export class CourseAddComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   addCourse(form: NgForm) {
     this.isLoadingResults = true;
     this.api.postCourse(form)
       .subscribe(res => {
-          const id = res.id;
-          this.isLoadingResults = false;
-          this.router.navigate(['/curso']);
-        }, (err) => {
-          console.log(err);
-          this.isLoadingResults = false;
-        });
+        this.openSnackBar('Curso cadastrado com sucesso!', 'Ok');
+        const id = res.id;
+        this.isLoadingResults = false;
+        this.router.navigate(['/curso']);
+      }, (err) => {
+        console.log(err);
+        this.isLoadingResults = false;
+      });
   }
 }

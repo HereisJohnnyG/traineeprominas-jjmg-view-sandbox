@@ -4,6 +4,7 @@ import { StudentService } from '../student.service';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/model/course';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-student-update',
@@ -22,8 +23,12 @@ export class StudentUpdateComponent implements OnInit {
   courseForm: Course;
   isLoadingResults = false;
 
-  constructor(private router: Router, private route: ActivatedRoute,
-              private apiCourse: CourseService, private api: StudentService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private apiCourse: CourseService,
+              private api: StudentService,
+              private formBuilder: FormBuilder,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getCourse();
@@ -33,6 +38,12 @@ export class StudentUpdateComponent implements OnInit {
       lastName : [null, Validators.required],
       age : [null, Validators.required],
       course : [null, Validators.required]
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
     });
   }
 
@@ -52,12 +63,13 @@ export class StudentUpdateComponent implements OnInit {
   this.isLoadingResults = true;
   this.api.putStudent(this.id, form)
     .subscribe(res => {
-        this.isLoadingResults = false;
-        this.router.navigate(['/estudante/' + this.id]);
-      }, (err) => {
-        console.log(err);
-        this.isLoadingResults = false;
-      }
+      this.openSnackBar('Estudante editado com sucesso!', 'Ok');
+      this.isLoadingResults = false;
+      this.router.navigate(['/estudante/' + this.id]);
+    }, (err) => {
+      console.log(err);
+      this.isLoadingResults = false;
+    }
     );
   }
   getCourse() {

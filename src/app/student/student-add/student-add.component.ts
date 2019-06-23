@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CourseService } from 'src/app/course/course.service';
 import { StudentService } from '../student.service';
 import { Course } from 'src/model/course';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-student-add',
@@ -20,8 +21,11 @@ export class StudentAddComponent implements OnInit {
   course: Course[];
   isLoadingResults = false;
 
-  constructor(private router: Router, private apiCourse: CourseService, private api: StudentService,
-              private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private apiCourse: CourseService,
+              private api: StudentService,
+              private formBuilder: FormBuilder,
+              private snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
@@ -50,13 +54,20 @@ export class StudentAddComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   addStudent(form: NgForm) {
     this.isLoadingResults = true;
     this.api.postStudent(form)
       .subscribe(res => {
-          const id = res.id;
-          this.isLoadingResults = false;
-          this.router.navigate(['/estudante']);
+        this.openSnackBar('Estudante cadastrado com sucesso!', 'Ok');
+        const id = res.id;
+        this.isLoadingResults = false;
+        this.router.navigate(['/estudante']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
