@@ -34,6 +34,7 @@ export class CourseUpdateComponent implements OnInit {
     this.getCourse(this.route.snapshot.params.id);
     this.courseForm = this.formBuilder.group({
       name : [null, Validators.required],
+      period : [null],
       city : [null, Validators.required],
       teacher : [null, Validators.required]
     });
