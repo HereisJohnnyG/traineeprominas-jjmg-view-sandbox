@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-update',
@@ -16,7 +17,12 @@ export class UserUpdateComponent implements OnInit {
     profile = '';
     isLoadingResults = false;
 
-    constructor(private router: Router, private route: ActivatedRoute, private api: UserService, private formBuilder: FormBuilder) { }
+    constructor(private snackBar: MatSnackBar,
+                private router: Router,
+                private route: ActivatedRoute,
+                private api: UserService,
+                private formBuilder: FormBuilder
+                ) { }
 
     ngOnInit() {
       this.getUser(this.route.snapshot.params.id);
@@ -36,11 +42,17 @@ export class UserUpdateComponent implements OnInit {
         });
       });
     }
+    openSnackBar(message: string, action: string) {
+      this.snackBar.open(message, action, {
+        duration: 2000,
+      });
+    }
 
     putUser(form: NgForm) {
     this.isLoadingResults = true;
     this.api.putUser(this.id, form)
       .subscribe(res => {
+          this.openSnackBar('Usuário editado com sucesso!', 'Ok');
           this.isLoadingResults = false;
           this.router.navigate(['/usuario/' + this.id]);
         }, (err) => {

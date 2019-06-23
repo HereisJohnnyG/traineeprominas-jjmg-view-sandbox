@@ -8,9 +8,20 @@ import { UserAddComponent } from './user/user-add/user-add.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule,
-  MatListModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatTableModule,
-  MatToolbarModule, MatRadioModule, MatCheckboxModule   } from '@angular/material';
+import { MatButtonModule,
+         MatCardModule,
+         MatIconModule,
+         MatInputModule,
+         MatListModule,
+         MatProgressSpinnerModule,
+         MatSelectModule,
+         MatSidenavModule,
+         MatTableModule,
+         MatToolbarModule,
+         MatRadioModule,
+         MatCheckboxModule,
+         MatSnackBarModule
+        } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +37,6 @@ import { StudentComponent } from './student/student/student.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { StudentUpdateComponent } from './student/student-update/student-update.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +78,8 @@ import { StudentUpdateComponent } from './student/student-update/student-update.
     MatPaginatorModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

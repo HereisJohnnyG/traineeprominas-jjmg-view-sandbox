@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { UserService } from '../user.service';
 export class UserAddComponent implements OnInit {
   productForm: FormGroup;
   isLoadingResults = false;
-  constructor(private router: Router, private api: UserService, private formBuilder: FormBuilder) { }
+  constructor(private snackBar: MatSnackBar, private router: Router, private api: UserService, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
@@ -24,10 +25,18 @@ export class UserAddComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+
   addProduto(form: NgForm) {
     this.isLoadingResults = true;
     this.api.postUser(form)
       .subscribe(res => {
+          this.openSnackBar('Usuário cadastrado com sucesso!', 'Ok');
           const id = res.id;
           this.isLoadingResults = false;
           this.router.navigate(['/usuario']);

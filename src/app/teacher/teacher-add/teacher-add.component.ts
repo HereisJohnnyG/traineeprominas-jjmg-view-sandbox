@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { TeacherService } from '../teacher.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-teacher-add',
@@ -13,7 +14,7 @@ export class TeacherAddComponent implements OnInit {
 
   teacherForm: FormGroup;
   isLoadingResults = false;
-  constructor(private router: Router, private api: TeacherService, private formBuilder: FormBuilder) { }
+  constructor(private snackBar: MatSnackBar, private router: Router, private api: TeacherService, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
@@ -24,13 +25,20 @@ export class TeacherAddComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   addTeacher(form: NgForm) {
     this.isLoadingResults = true;
     this.api.postTeacher(form)
       .subscribe(res => {
-          const id = res.id;
-          this.isLoadingResults = false;
-          this.router.navigate(['/professor']);
+        this.openSnackBar('Professor cadastrado com sucesso!', 'Ok');
+        const id = res.id;
+        this.isLoadingResults = false;
+        this.router.navigate(['/professor']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
