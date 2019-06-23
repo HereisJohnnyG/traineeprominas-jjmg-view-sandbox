@@ -11,7 +11,6 @@ import { UserService } from '../user.service';
 })
 
 export class UserAddComponent implements OnInit {
-
   productForm: FormGroup;
   isLoadingResults = false;
   constructor(private router: Router, private api: UserService, private formBuilder: FormBuilder) { }

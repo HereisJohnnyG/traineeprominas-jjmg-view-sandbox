@@ -5,9 +5,15 @@
 <form class="example-container" [formGroup]="teacherForm" (ngSubmit)="putTeacher(teacherForm.value)">
   <mat-form-field>
     <input matInput name="name" placeholder="nome" formControlName="name">
+    <mat-error>
+        É necessário digitar o nome do professor
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input  matInput name="lastName" placeholder="sobrenome" formControlName="lastName">
+    <mat-error>
+        É necessário digitar o sobrenome do professor
+    </mat-error>
   </mat-form-field>
   <mat-checkbox class = "example-margin" formControlName="phd" value="true"> 
       <label>Esse professor possui PHD </label> 

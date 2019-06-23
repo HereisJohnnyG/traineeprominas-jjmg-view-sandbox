@@ -4,12 +4,21 @@
 <form class="form-width example-container" [formGroup]="studentForm" (ngSubmit)="addStudent(studentForm.value)">
   <mat-form-field>
     <input matInput name="name" placeholder="Nome do estudante" formControlName="name">
+    <mat-error>
+        É necessário digitar o nome do estudante
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName">
+    <mat-error>
+        É necessário digitar o sobrenome do estudante
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input  matInput name="age" placeholder="Idade" type="number" formControlName="age">
+    <mat-error>
+        É necessário digitar a idade do estudante
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label >Curso</mat-label>
