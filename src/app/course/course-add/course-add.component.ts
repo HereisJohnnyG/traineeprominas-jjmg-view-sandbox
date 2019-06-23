@@ -33,6 +33,7 @@ export class CourseAddComponent implements OnInit {
     this.getTeacher();
     this.courseForm = this.formBuilder.group({
       name : [null, Validators.required],
+      period : [null],
       city : [null, Validators.required],
       teacher: [null, Validators.required]
     });
