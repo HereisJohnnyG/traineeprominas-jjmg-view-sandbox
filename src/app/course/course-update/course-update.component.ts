@@ -21,6 +21,7 @@ export class CourseUpdateComponent implements OnInit {
   lastName = '';
   phd = false;
   isLoadingResults = false;
+  selectedItems = [];
 
   constructor(private snackBar: MatSnackBar,
               private router: Router,

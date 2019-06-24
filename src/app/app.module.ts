@@ -20,7 +20,8 @@ import { MatButtonModule,
          MatToolbarModule,
          MatRadioModule,
          MatCheckboxModule,
-         MatSnackBarModule
+         MatSnackBarModule,
+         MatGridListModule
         } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -79,7 +80,8 @@ import { StudentUpdateComponent } from './student/student-update/student-update.
     MatRadioModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
