@@ -3,9 +3,16 @@
 </div>
 
 <div class="mat-elevation-z8">
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
-</mat-form-field>
+    <div class="zero">
+        <div class="one" fxflex="20">
+          <button mat-flat-button color="primary" title="Cadastrar Professor" routerLink="/professor-cadastro" >Criar novo usuário</button>
+        </div>
+      <div class="two" fxflex="80">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
+        </mat-form-field>
+      </div>
+    </div>
 <table mat-table [dataSource]="dataSource" class="mat-width mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -35,7 +42,7 @@
 
   <!-- Position Column -->
   <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef>  </th>
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element"> <button mat-icon-button title="Detalhar" id='button' color="primary" routerLink="/professor/{{element.id}}" ><mat-icon>list</mat-icon></button>
 
 <!-- Position Column -->

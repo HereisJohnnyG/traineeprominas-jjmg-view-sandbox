@@ -6,13 +6,9 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/usuario" routerLinkActive="active">Usuarios</a>
-      <a mat-list-item routerLink="/usuario-cadastro" routerLinkActive="active">Novo Usuário</a>
       <a mat-list-item routerLink="/professor" routerLinkActive="active">Professores</a>
-      <a mat-list-item routerLink="/professor-cadastro" routerLinkActive="active">Novo professor</a>
       <a mat-list-item routerLink="/curso" routerLinkActive="active">Curso</a>
-      <a mat-list-item routerLink="/curso-cadastro" routerLinkActive="active">Novo curso</a>
       <a mat-list-item routerLink="/estudante" routerLinkActive="active">Estudantes</a>
-      <a mat-list-item routerLink="/estudante-cadastro" routerLinkActive="active">Novo Estudante</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,7 +21,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>CRUD Trainee-Prominas</span>
+      <span>Trainee Prominas</span>
     </mat-toolbar>
     <div class="container">
    <router-outlet></router-outlet>
