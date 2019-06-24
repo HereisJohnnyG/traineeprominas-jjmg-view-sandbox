@@ -34,7 +34,7 @@ export class CourseUpdateComponent implements OnInit {
     this.getCourse(this.route.snapshot.params.id);
     this.courseForm = this.formBuilder.group({
       name : [null, Validators.required],
-      period : [8],
+      period : [null],
       city : [null, Validators.required],
       teacher: [[], [Validators.required, Validators.minLength(2)]]
     });
@@ -59,9 +59,12 @@ export class CourseUpdateComponent implements OnInit {
   }
 
 
-  putCourse(form: NgForm) {
-  this.isLoadingResults = true;
-  this.api.putCourse(this.id, form)
+  putCourse(form) {
+    if(!form.period){
+      form.period = 8;
+    }
+    this.isLoadingResults = true;
+    this.api.putCourse(this.id, form)
     .subscribe(res => {
       this.openSnackBar('Curso editado com sucesso!', 'Ok');
       this.isLoadingResults = false;

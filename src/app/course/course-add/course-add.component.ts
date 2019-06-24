@@ -33,7 +33,7 @@ export class CourseAddComponent implements OnInit {
     this.getTeacher();
     this.courseForm = this.formBuilder.group({
       name : [null, Validators.required],
-      period : [8],
+      period : [null],
       city : [null, Validators.required],
       teacher: [[], [Validators.required, Validators.minLength(2)]]
     });
@@ -63,7 +63,10 @@ export class CourseAddComponent implements OnInit {
     });
   }
 
-  addCourse(form: NgForm) {
+  addCourse(form) {
+    if(!form.period){
+      form.period = 8;
+    }
     this.isLoadingResults = true;
     this.api.postCourse(form)
       .subscribe(res => {
