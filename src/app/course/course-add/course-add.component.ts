@@ -17,7 +17,7 @@ export class CourseAddComponent implements OnInit {
   dataSource: Teacher[];
   courseForm: FormGroup;
   name = '';
-  period = 8;
+  period: number;
   city = '';
   teacher: Teacher[];
   isLoadingResults = false;
@@ -61,17 +61,6 @@ export class CourseAddComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
-  }
-
-  defaultvalue(newVal: number) {
-    console.log(newVal);
-    if (newVal.toLocaleString() === '') {
-      console.log('2');
-      this.period = 8;
-    } else {
-      console.log('3');
-      this.period = newVal;
-    }
   }
 
   addCourse(form: NgForm) {
