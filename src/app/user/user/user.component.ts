@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  isLoadingResults: boolean;
+  isLoadingResults = true;
   constructor(private router: Router, private route: ActivatedRoute, private api: UserService) { }
 
   ngOnInit() {

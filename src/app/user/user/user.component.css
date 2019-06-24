@@ -8,6 +8,9 @@
 .sbwidth{
     width: 50%;
 }
+* {
+    box-sizing: border-box;
+  }
 .two{
     place-content: left; 
     align-items: center; 
@@ -32,3 +35,4 @@
     display: flex; 
     flex: 1 1 1e-9px;
 }
+
