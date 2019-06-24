@@ -17,7 +17,7 @@ export class CourseAddComponent implements OnInit {
   dataSource: Teacher[];
   courseForm: FormGroup;
   name = '';
-  period = 0;
+  period = 8;
   city = '';
   teacher: Teacher[];
   isLoadingResults = false;
@@ -33,9 +33,9 @@ export class CourseAddComponent implements OnInit {
     this.getTeacher();
     this.courseForm = this.formBuilder.group({
       name : [null, Validators.required],
-      period : [null],
+      period : [8],
       city : [null, Validators.required],
-      teacher: [null, Validators.required]
+      teacher: [[], [Validators.required, Validators.minLength(2)]]
     });
   }
 
@@ -63,15 +63,31 @@ export class CourseAddComponent implements OnInit {
     });
   }
 
+  defaultvalue(newVal: number) {
+    console.log(newVal);
+    if (newVal.toLocaleString() === '') {
+      console.log('2');
+      this.period = 8;
+    } else {
+      console.log('3');
+      this.period = newVal;
+    }
+  }
+
   addCourse(form: NgForm) {
     this.isLoadingResults = true;
     this.api.postCourse(form)
       .subscribe(res => {
-        this.openSnackBar('Curso cadastrado com sucesso!', 'Ok');
-        const id = res.id;
-        this.isLoadingResults = false;
-        this.router.navigate(['/curso']);
+        if (res) {
+          this.openSnackBar('Curso cadastrado com sucesso!', 'Ok');
+          const id = res.id;
+          this.isLoadingResults = false;
+          this.router.navigate(['/curso']);
+        } else {
+          this.openSnackBar('Erro ao cadastradar o curso!', 'Ok');
+        }
       }, (err) => {
+        this.openSnackBar('Erro ao cadastradar o curso!', 'Ok');
         console.log(err);
         this.isLoadingResults = false;
       });
