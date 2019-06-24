@@ -33,7 +33,7 @@ export class StudentAddComponent implements OnInit {
     this.studentForm = this.formBuilder.group({
       name : [null, Validators.required],
       lastName : [null, [Validators.required]],
-      age : [null, Validators.required],
+      age : [null, [Validators.required, Validators.min(17)]],
       course: [null, Validators.required]
     });
   }

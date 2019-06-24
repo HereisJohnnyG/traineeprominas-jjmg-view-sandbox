@@ -28,7 +28,7 @@ export class CourseService {
   getCourse(id: number): Observable<Course> {
     const url = `${apiUrl}JSON/course/${id}`;
     return this.http.get<Course>(url).pipe(
-      tap(_ => console.log(`leu o usuário id=${id}`)),
+      tap(courses => console.log(`leu o usuário id=${id}`)),
       catchError(this.handleError<Course>(`getCourse id=${id}`))
     );
   }
@@ -51,7 +51,7 @@ export class CourseService {
   deleteCourse(id): Observable<Course> {
     const url = `${apiUrl}Course/${id}`;
     return this.http.delete<Course>(url, httpOptions).pipe(
-      tap(_ => console.log(`remove o usuário com id=${id}`)),
+      tap(courses => console.log(`remove o usuário com id=${id}`)),
       catchError(this.handleError<Course>('deleteCourse'))
     );
   }

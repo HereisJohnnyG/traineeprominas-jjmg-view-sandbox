@@ -22,7 +22,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${apiUrl}JSON/user`)
       .pipe(
-        tap(users => console.log('leu os usuários')),
+        tap(users => console.log('getUser')),
         catchError(this.handleError('getUsers', []))
       );
   }
@@ -30,14 +30,14 @@ export class UserService {
   getUser(id: number): Observable<User> {
     const url = `${apiUrl}JSON/user/${id}`;
     return this.http.get<User>(url).pipe(
-      tap(_ => console.log(`leu o usuário id=${id}`)),
+      tap(users => console.log(`getuser/${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
   postUser(user): Observable<User> {
     return this.http.post<User>(`${apiUrl}user`, user, httpOptions).pipe(
-      tap((user1: User) => console.log(`adicionou o usuário com w/ id=${user1.id}`)),
+      tap((user1: User) => console.log(`postUser/${user1.id}`)),
       catchError(this.handleError<User>('postUser'))
     );
   }
@@ -45,7 +45,7 @@ export class UserService {
   putUser(id, user): Observable<any> {
     const url = `${apiUrl}user/${id}`;
     return this.http.put(url, user, httpOptions).pipe(
-      tap(_ => console.log(`atualiza o usuário com id=${id}`)),
+      tap(_ => console.log(`putUser/${id}`)),
       catchError(this.handleError<any>('updateUser'))
     );
   }
@@ -53,7 +53,7 @@ export class UserService {
   deleteUser(id): Observable<User> {
     const url = `${apiUrl}user/${id}`;
     return this.http.delete<User>(url, httpOptions).pipe(
-      tap(_ => console.log(`remove o usuário com id=${id}`)),
+      tap(_ => console.log(`removeUser/${id}`)),
       catchError(this.handleError<User>('deleteUser'))
     );
   }
