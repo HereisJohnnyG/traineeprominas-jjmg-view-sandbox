@@ -1,0 +1,30 @@
+<div>
+  <h3>Adicionar Novo Curso</h3>
+</div>
+<form class="form-width example-container" [formGroup]="courseForm" (ngSubmit)="addCourse(courseForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Nome do curso" formControlName="name">
+    <mat-error>
+        É necessário digitar o nome do curso
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="period" placeholder="Periodo" formControlName="period">
+    <mat-hint>Caso não seja alterado, o valor padrão é 8 periodos</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="city" placeholder="Cidade" formControlName="city">
+    <mat-error>
+        É necessário digitar a cidade do curso
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label >Professores</mat-label>
+    <mat-select name="teacher" formControlName="teacher" multiple>
+    <mat-option *ngFor="let element of teacher" [value]="element.id">{{element.name}} {{element.lastName}}</mat-option>
+    </mat-select>
+    <mat-hint>O curso deve possuir 2 ou mais professores</mat-hint>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!courseForm.valid" mat-button color="primary" >Adicionar</button>
+</form>

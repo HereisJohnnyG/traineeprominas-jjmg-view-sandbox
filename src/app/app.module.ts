@@ -63,6 +63,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { TeacherComponent } from './teacher/teacher/teacher.component';
+import { TeacherAddComponent } from './teacher/teacher-add/teacher-add.component';
+import { TeacherDetailComponent } from './teacher/teacher-detail/teacher-detail.component';
+import { TeacherUpdateComponent } from './teacher/teacher-update/teacher-update.component';
+import { CourseAddComponent } from './course/course-add/course-add.component';
+import { CourseComponent } from './course/course/course.component';
+import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { CourseUpdateComponent } from './course/course-update/course-update.component';
+import { StudentComponent } from './student/student/student.component';
+import { StudentAddComponent } from './student/student-add/student-add.component';
+import { StudentUpdateComponent } from './student/student-update/student-update.component';
+import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 
 @NgModule({
   imports: [
@@ -109,7 +120,18 @@ import { TeacherComponent } from './teacher/teacher/teacher.component';
     UserAddComponent,
     UserUpdateComponent,
     UserDetailComponent,
-    TeacherComponent
+    TeacherComponent,
+    TeacherAddComponent,
+    TeacherDetailComponent,
+    TeacherUpdateComponent,
+    CourseAddComponent,
+    CourseComponent,
+    CourseDetailComponent,
+    CourseUpdateComponent,
+    StudentComponent,
+    StudentAddComponent,
+    StudentUpdateComponent,
+    StudentDetailComponent
   ],
   providers: [{
     provide: LocationStrategy,

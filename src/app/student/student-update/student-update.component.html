@@ -1,0 +1,31 @@
+<div>
+  <h3>Editar Estudante</h3>
+</div>
+<form class="form-width example-container" [formGroup]="studentForm" (ngSubmit)="putStudent(studentForm.value)">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Nome do estudante" formControlName="name">
+    <mat-error>
+        É necessário digitar o nome do estudante
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName">
+    <mat-error>
+        É necessário digitar o sobrenome do estudante
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput type="number" name="age" placeholder="Idade" formControlName="age">
+    <mat-error>
+        É necessário digitar a idade do estudante
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label >Curso</mat-label>
+    <mat-select name="course" formControlName="course">
+    <mat-option *ngFor="let element of course" [value]="element.id">{{element.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!studentForm.valid" mat-button color="primary" >Editar</button>
+</form>

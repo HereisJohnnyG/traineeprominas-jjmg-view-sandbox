@@ -1,0 +1,32 @@
+.mat-width{
+    width: 90%;    
+}
+.mat-form-field {
+    font-size: 16px;
+    width: 90%;
+}
+
+.two{
+    place-content: left; 
+    align-items: center; 
+    flex-direction: row; 
+    box-sizing: border-box; 
+    display: flex; 
+    flex: 1 1 10%; 
+    max-width: 78%;
+}
+.one{
+    place-content: left;
+    align-items: center; 
+    flex-direction: row; 
+    box-sizing: border-box; 
+    display: flex; 
+    flex: 1 1 100%; 
+    max-width: 20%;
+}
+.zero{
+    flex-direction: row; 
+    box-sizing: border-box; 
+    display: flex; 
+    flex: 1 1 1e-9px;
+}
