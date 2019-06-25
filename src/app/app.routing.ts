@@ -8,11 +8,15 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { UserComponent } from './user/user/user.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'usuario',
     pathMatch: 'full',
   },
   {
@@ -51,36 +55,31 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'base',
-        loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
+        path: 'usuario',
+        component: UserComponent,
+        data: {
+          title: 'Register Page'
+        }
       },
       {
-        path: 'buttons',
-        loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
+        path: 'usuario/:id',
+        component: UserDetailComponent,
+        data: { title: 'Detalhe do usuário' }
       },
       {
-        path: 'charts',
-        loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
+        path: 'usuario-cadastro',
+        component: UserAddComponent,
+        data: { title: 'Adicionar usuário' }
       },
       {
-        path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'usuario-editar/:id',
+        component: UserUpdateComponent,
+        data: { title: 'Editar o usuário' }
       },
       {
-        path: 'icons',
-        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
-      },
-      {
-        path: 'notifications',
-        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      },
-      {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+        path: 'usuario-delete/:id',
+        component: UserUpdateComponent,
+        data: { title: 'Deletar o usuário' }
       }
     ]
   },

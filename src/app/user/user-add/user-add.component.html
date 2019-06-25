@@ -1,0 +1,25 @@
+<div>
+    <h3>Adicionar Novo Usuário</h3>
+  </div>
+  <form class="form-width example-container" [formGroup]="productForm" (ngSubmit)="addProduto(productForm.value)">
+    <mat-form-field>
+      <input matInput name="name" placeholder="Nome do Usuário" formControlName="name">
+      <mat-error>
+          Digitar o nome do usuário
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName">
+      <mat-error>
+          Digitar o sobrenome do usuário
+      </mat-error>
+    </mat-form-field>
+    <mat-radio-group aria-label="Select an option" formControlName="profile">
+      <mat-radio-button  name="profile" value="admin">Administrador</mat-radio-button>
+      <mat-radio-button name="profile" value="guess">Visitante</mat-radio-button>
+    </mat-radio-group>
+  
+    <button type="submit" [disabled]="!productForm.valid" mat-button color="primary" >Adicionar</button>
+  </form>
+  

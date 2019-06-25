@@ -40,9 +40,34 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { UserComponent } from './user/user/user.component';
+import { MatButtonModule, 
+         MatInputModule, 
+         MatCardModule, 
+         MatIconModule, 
+         MatListModule, 
+         MatProgressSpinnerModule, 
+         MatSelectModule, 
+         MatSidenavModule, 
+         MatTableModule, 
+         MatToolbarModule,
+         MatPaginatorModule,
+         MatRadioModule,
+         MatCheckboxModule,
+         MatChipsModule,
+         MatSnackBarModule,
+         MatGridListModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { UserAddComponent } from './user/user-add/user-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { TeacherComponent } from './teacher/teacher/teacher.component';
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -54,7 +79,24 @@ import { ChartsModule } from 'ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -62,7 +104,12 @@ import { ChartsModule } from 'ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent,
+    UserAddComponent,
+    UserUpdateComponent,
+    UserDetailComponent,
+    TeacherComponent
   ],
   providers: [{
     provide: LocationStrategy,
