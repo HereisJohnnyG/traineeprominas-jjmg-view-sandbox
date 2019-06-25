@@ -3,13 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from '../../../model/user';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { TestService } from '../../test.service';
 import { UserService } from '../user.service';
+
+var d3 = require("d3");
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
   displayedColumns: string[] = [ 'id', 'name', 'lastName', 'profile', 'action'];
@@ -34,6 +35,7 @@ export class UserComponent implements OnInit {
     }, err => {
       this.isLoadingResults = false;
     });
+    this.grafic();
   }
 
   applyFilter(filterValue: string) {
@@ -50,6 +52,12 @@ export class UserComponent implements OnInit {
           this.isLoadingResults = false;
         }
       );
+  }
+
+  grafic(){
+    var data = [2, 4, 8, 10];
+    var pie = d3.pie()
+    console.log(pie(data))
   }
 
 }

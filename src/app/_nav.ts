@@ -37,7 +37,7 @@ export const navItems: NavData[] = [
   {
     name: 'Usuários',
     url: '/usuario/',
-    icon: 'icon-drop'
+    icon: 'icon-user'
   },
   {
     name: 'Professores',
