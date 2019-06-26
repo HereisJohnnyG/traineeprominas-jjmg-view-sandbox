@@ -5,22 +5,24 @@ import { UserService } from '../user/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StudentService } from '../student/student.service';
 
+declare let google:any
+
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-
+  
   student: Student[];
   user: User[];
   isLoadingResults = true;
 
   constructor(
-    private apiUser: UserService,
-    private apiStudent: StudentService,
-    private router: Router, 
-    private route: ActivatedRoute) { }
+      private apiUser: UserService,
+      private apiStudent: StudentService,
+      private router: Router,
+      private route: ActivatedRoute) {  }
 
   ngOnInit() {
     this.apiUser.getUsers()
@@ -75,6 +77,7 @@ export class ChartComponent implements OnInit {
     var options = {
       title:'Numero de estudantes por curso de perfil',
       chartArea: {width: '80%'},
+      height: 300,
       hAxis: {
         title: 'Perfil',
         minValue: 0
@@ -92,7 +95,7 @@ export class ChartComponent implements OnInit {
     let guess = this.user.filter(e => {return e.profile === "guess"});
 
     const data = google.visualization.arrayToDataTable([
-        ['Usuários', 'Usuário'],
+        ['Usuários', 'Usuários'],
         ['Administrador', admin.length],
         ['Visitante', guess.length],
     ]);
