@@ -4,16 +4,16 @@
 
 <div class="mat-elevation-z8">
   <div class="zero">
-      <div class="one" fxflex="20">
-        <button mat-flat-button color="primary" title="Cadastrar Estudante" routerLink="/estudante-cadastro" >Criar novo Estudante</button>
+      <div class="one">
+        <button mat-flat-button class="probutton" title="Cadastrar Estudante" routerLink="/estudante-cadastro" >Criar novo Estudante</button>
       </div>
-    <div class="two" fxflex="80">
+    <div class="two">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
       </mat-form-field>
     </div>
   </div>
-<table mat-table [dataSource]="dataSource" class="mat-width mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-width">
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->

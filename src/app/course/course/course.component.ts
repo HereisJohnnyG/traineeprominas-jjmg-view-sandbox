@@ -42,10 +42,9 @@ export class CourseComponent implements OnInit {
   }
   nestedFilterCheck(search, data, key) {
     if (typeof data[key] === 'object') {
-      for(let i = 0; i < data[key].length; i++){
+      for (let i = 0; i < data[key].length; i++) {
         for (const k in data[key][i]) {
-          //console.log(data[key][i]);
-          if(k == 'name'){
+          if (k === 'name') {
             if (data[key][k] !== null) {
               search = this.nestedFilterCheck(search, data[key][i], k);
             }

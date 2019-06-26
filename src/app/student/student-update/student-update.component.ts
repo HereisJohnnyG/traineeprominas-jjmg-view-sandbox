@@ -37,7 +37,7 @@ export class StudentUpdateComponent implements OnInit {
       name : [null, Validators.required],
       lastName : [null, Validators.required],
       age : [null, Validators.required],
-      course : [null, Validators.required]
+      course : [[], Validators.required]
     });
   }
 

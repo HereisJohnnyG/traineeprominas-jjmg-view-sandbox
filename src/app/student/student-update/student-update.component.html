@@ -25,7 +25,10 @@
     <mat-select name="course" formControlName="course">
     <mat-option *ngFor="let element of course" [value]="element.id">{{element.name}}</mat-option>
     </mat-select>
+    <mat-error>
+      É necessário selecionar um curso
+    </mat-error>
   </mat-form-field>
 
-  <button type="submit" [disabled]="!studentForm.valid" mat-button color="primary" >Editar</button>
+  <button type="submit" [disabled]="!studentForm.valid" mat-button class="probutton" >Editar</button>
 </form>

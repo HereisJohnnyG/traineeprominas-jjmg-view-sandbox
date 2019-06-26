@@ -5,7 +5,6 @@ import { User } from '../../../model/user';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { UserService } from '../user.service';
 
-var d3 = require("d3");
 
 @Component({
   selector: 'app-user',
@@ -21,12 +20,11 @@ export class UserComponent implements OnInit {
   isLoadingResults = true;
   constructor(
     private api: UserService,
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    
     this.api.getUsers()
     .subscribe(res => {
       this.dataSource = new MatTableDataSource<User>(res);
@@ -35,7 +33,6 @@ export class UserComponent implements OnInit {
     }, err => {
       this.isLoadingResults = false;
     });
-    this.grafic();
   }
 
   applyFilter(filterValue: string) {
@@ -54,10 +51,5 @@ export class UserComponent implements OnInit {
       );
   }
 
-  grafic(){
-    var data = [2, 4, 8, 10];
-    var pie = d3.pie()
-    console.log(pie(data))
-  }
 
 }

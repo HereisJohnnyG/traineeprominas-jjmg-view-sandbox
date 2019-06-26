@@ -3,9 +3,7 @@
        *ngIf="isLoadingResults">
   <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
-  <div class="button-row">
-      <button mat-flat-button color="accent" [routerLink]="['/curso']"><mat-icon>arrow_back</mat-icon> Voltar</button>
-    </div>
+  
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title><h2>{{course.name}}</h2></mat-card-title>
@@ -22,8 +20,8 @@
       </dl>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button color="primary" class="teste" [routerLink]="['/curso-editar', course.id]"><mat-icon>edit</mat-icon> Editar</button>
-      <button mat-flat-button color="warn" (click)="deletecourse(course.id)"><mat-icon>delete</mat-icon> Excluir</button>
+      <button mat-flat-button class="probutton" [routerLink]="['/curso-editar', course.id]"><mat-icon>edit</mat-icon> Editar</button>
+      <button mat-flat-button class="delbutton" (click)="deletecourse(course.id)"><mat-icon>delete</mat-icon> Excluir</button>
     </mat-card-actions>
   </mat-card>
 </div>

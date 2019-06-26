@@ -2,18 +2,18 @@
     <h3>Lista de Usuários</h3>
   </div>
   
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" class="flex-center">
       <div class="zero">
-        <div class="one col-3" fxflex="20">
-          <button mat-flat-button color="primary" title="Cadastrar novo usuário" routerLink="/usuario-cadastro" >Cadastrar novo usuário</button>
+        <div class="one">
+          <button mat-flat-button class="probutton" title="Cadastrar novo usuário" routerLink="/usuario-cadastro" >Cadastrar novo usuário</button>
         </div>
-      <div class="two col-9" fxflex="80">
+      <div class="two">
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
         </mat-form-field>
       </div>
     </div>
-  <table mat-table [dataSource]="dataSource" class="mat-width mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="flex-center" class="mat-width">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
     <!-- Name Column -->
@@ -52,6 +52,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
   </table>
-  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 20]" class="mat-width" showFirstLastButtons></mat-paginator>
   </div>
   
