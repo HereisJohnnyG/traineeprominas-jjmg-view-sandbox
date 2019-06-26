@@ -15,7 +15,7 @@
       </dl>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button class="probutton" [routerLink]="['/estudante-editar', student.id]"><mat-icon>edit</mat-icon> Editar</button>
+      <button mat-flat-button class="probutton" [routerLink]="['/editar/estudante', student.id]"><mat-icon>edit</mat-icon> Editar</button>
       <button mat-flat-button class="delbutton" (click)="deletestudent(student.id)"><mat-icon>delete</mat-icon> Excluir</button>
     </mat-card-actions>
   </mat-card>

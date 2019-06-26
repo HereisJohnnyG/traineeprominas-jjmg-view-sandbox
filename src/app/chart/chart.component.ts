@@ -75,7 +75,7 @@ export class ChartComponent implements OnInit {
     data.addRows(a);
 
     var options = {
-      title:'Numero de estudantes por curso de perfil',
+      title:'Numero de estudantes por curso',
       chartArea: {width: '80%'},
       height: 300,
       hAxis: {

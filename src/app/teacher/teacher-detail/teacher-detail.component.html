@@ -19,7 +19,7 @@
       </dl>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button class="probutton" [routerLink]="['/professor-editar', teacher.id]"><mat-icon>edit</mat-icon> Editar</button>
+      <button mat-flat-button class="probutton" [routerLink]="['/editar/professor', teacher.id]"><mat-icon>edit</mat-icon> Editar</button>
       <button mat-flat-button class="delbutton" (click)="deleteTeacher(teacher.id)"><mat-icon>delete</mat-icon> Excluir</button>
     </mat-card-actions>
   </mat-card>

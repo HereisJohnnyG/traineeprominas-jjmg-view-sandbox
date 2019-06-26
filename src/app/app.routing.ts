@@ -87,12 +87,12 @@ export const routes: Routes = [
         data: { title: 'Detalhe do usuário' }
       },
       {
-        path: 'usuario-cadastro',
+        path: 'cadastro/usuario',
         component: UserAddComponent,
         data: { title: 'Adicionar usuário' }
       },
       {
-        path: 'usuario-editar/:id',
+        path: 'editar/usuario/:id',
         component: UserUpdateComponent,
         data: { title: 'Editar o usuário' }
       },
@@ -112,12 +112,12 @@ export const routes: Routes = [
         data: { title: 'Detalhe do professor' }
       },
       {
-        path: 'professor-cadastro',
+        path: 'cadastro/professor',
         component: TeacherAddComponent,
         data: { title: 'Adicionar professor' }
       },
       {
-        path: 'professor-editar/:id',
+        path: 'editar/professor/:id',
         component: TeacherUpdateComponent,
         data: { title: 'Editar o professor' }
       },
@@ -137,7 +137,7 @@ export const routes: Routes = [
         data: { title: 'Detalhe do curso' }
       },
       {
-        path: 'curso-cadastro',
+        path: 'cadastro/curso',
         component: CourseAddComponent,
         data: { title: 'Adicionar curso' }
       },
@@ -168,12 +168,12 @@ export const routes: Routes = [
         data: { title: 'Detalhe do estudantes' }
       },
       {
-        path: 'estudante-cadastro',
+        path: 'cadastro/estudante',
         component: StudentAddComponent,
         data: { title: 'Adicionar estudantes' }
       },
       {
-        path: 'estudante-editar/:id',
+        path: 'editar/estudante/:id',
         component: StudentUpdateComponent,
         data: { title: 'Editar o estudantes' }
       },

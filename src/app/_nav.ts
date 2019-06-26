@@ -42,7 +42,7 @@ export const navItems: NavData[] = [
   {
     name: 'Professores',
     url: '/professor/',
-    icon: 'icon-pencil'
+    icon: 'icon-eyeglass'
   },
   {
     name: 'Curso',
@@ -52,7 +52,7 @@ export const navItems: NavData[] = [
   {
     name: 'Estudante',
     url: '/estudante/',
-    icon: 'icon-pencil'
+    icon: 'icon-graduation'
   },
   {
     name: 'Gráficos',

@@ -5,7 +5,7 @@
 <div class="flex-center">
   <div class="zero">
       <div class="one">
-        <button mat-flat-button class="probutton" title="Cadastrar Estudante" routerLink="/estudante-cadastro" >Criar novo Estudante</button>
+        <button mat-flat-button class="probutton" title="Cadastrar Estudante" routerLink="/cadastro/estudante" >Criar novo Estudante</button>
       </div>
     <div class="two">
       <mat-form-field>
@@ -51,7 +51,7 @@
 
 <!-- Position Column -->
 
-  <button mat-icon-button title="Editar" color="primary" routerLink="/estudante-editar/{{element.id}}" ><mat-icon>edit</mat-icon></button>
+  <button mat-icon-button title="Editar" color="primary" routerLink="/editar/estudante/{{element.id}}" ><mat-icon>edit</mat-icon></button>
 
 <!-- Position Column -->
   <button mat-icon-button color="warn" title="Excluir" (click)="deleteStudent(element.id)" ><mat-icon>delete</mat-icon></button></td>
