@@ -24,6 +24,7 @@ import { StudentComponent } from './student/student/student.component';
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { StudentUpdateComponent } from './student/student-update/student-update.component';
+import { ChartComponent } from './chart/chart.component';
 
 export const routes: Routes = [
   {
@@ -71,6 +72,13 @@ export const routes: Routes = [
         component: UserComponent,
         data: {
           title: 'Lista de usuários'
+        }
+      },
+      {
+        path: 'grafico',
+        component: ChartComponent,
+        data: {
+          title: 'Graficos'
         }
       },
       {

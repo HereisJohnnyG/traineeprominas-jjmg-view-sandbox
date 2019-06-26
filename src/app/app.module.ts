@@ -74,6 +74,7 @@ import { StudentComponent } from './student/student/student.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { StudentUpdateComponent } from './student/student-update/student-update.component';
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   imports: [
@@ -131,7 +132,8 @@ import { StudentDetailComponent } from './student/student-detail/student-detail.
     StudentComponent,
     StudentAddComponent,
     StudentUpdateComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    ChartComponent
   ],
   providers: [{
     provide: LocationStrategy,

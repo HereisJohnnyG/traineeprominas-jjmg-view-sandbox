@@ -24,12 +24,12 @@ export class StudentComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Student>(res);
         this.dataSource.paginator = this.paginator;
         this.isLoadingResults = false;
-        console.log(res);
       }, err => {
         console.log(err);
         this.isLoadingResults = false;
       });
   }
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filterPredicate = (data, filter: string)  => {

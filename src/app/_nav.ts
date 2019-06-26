@@ -53,5 +53,10 @@ export const navItems: NavData[] = [
     name: 'Estudante',
     url: '/estudante/',
     icon: 'icon-pencil'
+  },
+  {
+    name: 'Gráficos',
+    url: '/grafico/',
+    icon: 'icon-chart'
   }
 ];

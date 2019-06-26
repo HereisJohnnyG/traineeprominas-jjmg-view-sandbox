@@ -16,15 +16,15 @@ export class UserComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-
   isLoadingResults = true;
   constructor(
     private api: UserService,
-    private router: Router,
+    private router: Router, 
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    
     this.api.getUsers()
     .subscribe(res => {
       this.dataSource = new MatTableDataSource<User>(res);
@@ -32,7 +32,8 @@ export class UserComponent implements OnInit {
       this.isLoadingResults = false;
     }, err => {
       this.isLoadingResults = false;
-    });
+    })
+    
   }
 
   applyFilter(filterValue: string) {
@@ -50,6 +51,5 @@ export class UserComponent implements OnInit {
         }
       );
   }
-
 
 }
