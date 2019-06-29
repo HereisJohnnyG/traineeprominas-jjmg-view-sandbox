@@ -19,12 +19,11 @@ export class UserComponent implements OnInit {
   isLoadingResults = true;
   constructor(
     private api: UserService,
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    
     this.api.getUsers()
     .subscribe(res => {
       this.dataSource = new MatTableDataSource<User>(res);
@@ -32,8 +31,7 @@ export class UserComponent implements OnInit {
       this.isLoadingResults = false;
     }, err => {
       this.isLoadingResults = false;
-    })
-    
+    });
   }
 
   applyFilter(filterValue: string) {

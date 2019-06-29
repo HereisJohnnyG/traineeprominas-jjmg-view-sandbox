@@ -25,12 +25,12 @@ import { StudentDetailComponent } from './student/student-detail/student-detail.
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { StudentUpdateComponent } from './student/student-update/student-update.component';
 import { ChartComponent } from './chart/chart.component';
+import { CallbackComponent } from './callback/callback.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'usuario',
-    pathMatch: 'full',
+    path: 'callback',
+    component: CallbackComponent
   },
   {
     path: '404',
@@ -151,10 +151,6 @@ export const routes: Routes = [
         component: CourseUpdateComponent,
         data: { title: 'Deletar o curso' }
       },
-      { path: '',
-        redirectTo: '/curso',
-        pathMatch: 'full'
-      },
       // Student
 
       {
@@ -188,7 +184,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, { useHash: false }) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

@@ -5,18 +5,19 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../model/user';
 import { Observable, of } from 'rxjs';
 
-
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json'}),
 };
 
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class UserService {
 
-  readonly apiUrl = "https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/";
+  readonly apiUrl = 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/';
 
   constructor(private http: HttpClient) { }
 

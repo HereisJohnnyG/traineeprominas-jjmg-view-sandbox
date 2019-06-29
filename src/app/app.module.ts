@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -41,15 +40,15 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { UserComponent } from './user/user/user.component';
-import { MatButtonModule, 
-         MatInputModule, 
-         MatCardModule, 
-         MatIconModule, 
-         MatListModule, 
-         MatProgressSpinnerModule, 
-         MatSelectModule, 
-         MatSidenavModule, 
-         MatTableModule, 
+import { MatButtonModule,
+         MatInputModule,
+         MatCardModule,
+         MatIconModule,
+         MatListModule,
+         MatProgressSpinnerModule,
+         MatSelectModule,
+         MatSidenavModule,
+         MatTableModule,
          MatToolbarModule,
          MatPaginatorModule,
          MatRadioModule,
@@ -75,6 +74,7 @@ import { StudentAddComponent } from './student/student-add/student-add.component
 import { StudentUpdateComponent } from './student/student-update/student-update.component';
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { ChartComponent } from './chart/chart.component';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   imports: [
@@ -133,12 +133,10 @@ import { ChartComponent } from './chart/chart.component';
     StudentAddComponent,
     StudentUpdateComponent,
     StudentDetailComponent,
-    ChartComponent
+    ChartComponent,
+    CallbackComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

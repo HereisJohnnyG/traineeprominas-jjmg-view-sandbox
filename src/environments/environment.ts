@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/'
+  api: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/'
 };
