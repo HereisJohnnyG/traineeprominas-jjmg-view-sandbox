@@ -5,8 +5,8 @@
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
-  <button (click)="login()" *ngIf="!isAuthenticated">Log In</button>
-  <button *ngIf="isAuthenticated" (click)="logout()">Log out</button>
+  <a href="#" (click)="login()" *ngIf="!isAuthenticated">Log In</a>
+  <a href="#" *ngIf="isAuthenticated" (click)="logout()">Log out</a>
   <ul class="nav navbar-nav ml-auto">
     
   </ul>
