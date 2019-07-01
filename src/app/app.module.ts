@@ -75,6 +75,7 @@ import { StudentUpdateComponent } from './student/student-update/student-update.
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { ChartComponent } from './chart/chart.component';
 import { CallbackComponent } from './callback/callback.component';
+import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -108,7 +109,8 @@ import { CallbackComponent } from './callback/callback.component';
     MatChipsModule,
     MatSnackBarModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbCollapseModule
   ],
   declarations: [
     AppComponent,

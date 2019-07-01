@@ -22,6 +22,9 @@ export class CallbackComponent implements OnInit {
     // Update observables
     this.authService.isAuthenticated.next(await client.isAuthenticated());
     this.authService.profile.next(await client.getUser());
+    this.authService.token.next(await client.getTokenSilently());
+    localStorage.setItem('authorization', await client.getTokenSilently());
+
 
     // Redirect away
     this.router.navigate([targetRoute]);

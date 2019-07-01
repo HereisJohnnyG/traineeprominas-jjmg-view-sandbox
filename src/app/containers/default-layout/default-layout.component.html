@@ -6,7 +6,7 @@
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
   <button (click)="login()" *ngIf="!isAuthenticated">Log In</button>
-  <button (click)="logout()" *ngIf="isAuthenticated">Log Out</button>
+  <button *ngIf="isAuthenticated" (click)="logout()">Log out</button>
   <ul class="nav navbar-nav ml-auto">
     
   </ul>

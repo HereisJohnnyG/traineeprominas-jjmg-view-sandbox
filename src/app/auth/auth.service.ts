@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   isAuthenticated = new BehaviorSubject(false);
   profile = new BehaviorSubject<any>(null);
+  token = new BehaviorSubject<string>(null);
 
   private auth0Client: Auth0Client;
 
@@ -17,31 +18,49 @@ export class AuthService {
     domain: 'dev-47b3881g.auth0.com',
     client_id: 'L5r0l3wL8rNaFu5cHBo8koNGIDZh5kqN',
     redirect_uri: `${window.location.origin}/callback`,
-    audience: 'Trainee' // NEW - add in the audience value
+    audience: 'sadadad'
   };
+
+  /*  config = {
+      domain: 'dev-xsfon-m5.auth0.com',
+      client_id: 'qBhIPoGAsE7bZpASpkfXlhhJr1iewawZ',
+      redirect_uri: `${window.location.origin}/callback`,
+      audience: 'Trainee'
+    };
+  */
 
   /**
    * Gets the Auth0Client instance.
    */
   async getAuth0Client(): Promise<Auth0Client> {
     if (!this.auth0Client) {
-      this.auth0Client = await createAuth0Client(this.config);
-
-      // Provide the current value of isAuthenticated
-      this.isAuthenticated.next(await this.auth0Client.isAuthenticated());
-
-      // Whenever isAuthenticated changes, provide the current value of `getUser`
-      this.isAuthenticated.subscribe(async isAuthenticated => {
-        if (isAuthenticated) {
-          this.profile.next(await this.auth0Client.getUser());
-
-          return;
-        }
-
-        this.profile.next(null);
+      this.auth0Client = await createAuth0Client({
+        domain: this.config.domain,
+        client_id: this.config.client_id,
+        audience: this.config.audience,
+        redirect_uri: `${window.location.origin}/callback`
       });
+
+      try {
+        this.token.next(await this.auth0Client.getTokenSilently());
+
+        this.isAuthenticated.next(await this.auth0Client.isAuthenticated());
+
+        this.isAuthenticated.subscribe(async isAuthenticated => {
+          if (isAuthenticated) {
+            return this.profile.next(await this.auth0Client.getUser());
+          }
+
+          this.profile.next(null);
+        });
+      } catch {}
+
+      return this.auth0Client;
     }
 
     return this.auth0Client;
   }
+
+  getIdTokenClaims = (...p) => this.auth0Client.getIdTokenClaims(...p);
+  getTokenSilently = (...p) => this.auth0Client.getTokenSilently(...p);
 }

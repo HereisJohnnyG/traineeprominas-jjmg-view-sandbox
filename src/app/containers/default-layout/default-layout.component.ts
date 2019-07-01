@@ -15,6 +15,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   private changes: MutationObserver;
   public element: HTMLElement;
   isAuthenticated = false;
+  isCollapsed = true;
   profile: any;
 
   private auth0Client: Auth0Client;
@@ -51,6 +52,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   }
 
   logout() {
+    localStorage.clear();
     this.auth0Client.logout({
       client_id: this.authService.config.client_id,
       returnTo: window.location.origin

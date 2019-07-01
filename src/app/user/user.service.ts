@@ -4,25 +4,32 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../model/user';
 import { Observable, of } from 'rxjs';
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
-};
-
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class UserService {
 
   readonly apiUrl = 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/';
 
-  constructor(private http: HttpClient) { }
+  private getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'authorization': `Bearer ${localStorage.getItem('authorization')}`
+      })
+    };
+  }
+
+
+
+  constructor(private authService: AuthService,
+              private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}JSON/user`)
+    return this.http.get<User[]>(`${this.apiUrl}JSON/user`, this.getHeaders())
       .pipe(
         tap(users => console.log('getUser')),
         catchError(this.handleError('getUsers', []))
@@ -31,14 +38,14 @@ export class UserService {
 
   getUser(id: number): Observable<User> {
     const url = `${this.apiUrl}JSON/user/${id}`;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, this.getHeaders()).pipe(
       tap(users => console.log(`getuser/${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
   postUser(user): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}user`, user, httpOptions).pipe(
+    return this.http.post<User>(`${this.apiUrl}user`, user, this.getHeaders()).pipe(
       tap((user1: User) => console.log(`postUser/${user1.id}`)),
       catchError(this.handleError<User>('postUser'))
     );
@@ -46,7 +53,7 @@ export class UserService {
 
   putUser(id, user): Observable<any> {
     const url = `${this.apiUrl}user/${id}`;
-    return this.http.put(url, user, httpOptions).pipe(
+    return this.http.put(url, user, this.getHeaders()).pipe(
       tap(_ => console.log(`putUser/${id}`)),
       catchError(this.handleError<any>('updateUser'))
     );
@@ -54,7 +61,7 @@ export class UserService {
 
   deleteUser(id): Observable<User> {
     const url = `${this.apiUrl}user/${id}`;
-    return this.http.delete<User>(url, httpOptions).pipe(
+    return this.http.delete<User>(url, this.getHeaders()).pipe(
       tap(_ => console.log(`removeUser/${id}`)),
       catchError(this.handleError<User>('deleteUser'))
     );
@@ -68,8 +75,3 @@ export class UserService {
   }
 
 }
-
-
-
-
-
