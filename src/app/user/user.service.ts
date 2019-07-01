@@ -12,13 +12,13 @@ import { AuthService } from '../auth/auth.service';
 
 export class UserService {
 
-  readonly apiUrl = 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/';
+  readonly apiUrl = 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/';
 
   private getHeaders() {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        // 'authorization': `Bearer ${localStorage.getItem('authorization')}`
+        'authorization': `Bearer ${localStorage.getItem('authorization')}`
       })
     };
   }

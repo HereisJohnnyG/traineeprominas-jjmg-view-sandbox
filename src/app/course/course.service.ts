@@ -14,11 +14,18 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CourseService {
-
+  private getHeaders() {  
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('authorization')}`
+      })
+    };
+  }
   constructor(private http: HttpClient) { }
 
   getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${apiUrl}course`)
+    return this.http.get<Course[]>(`${apiUrl}course`, this.getHeaders())
       .pipe(
         tap(courses => console.log('leu os cursos')),
         catchError(this.handleError('getCourses', []))
@@ -27,14 +34,14 @@ export class CourseService {
 
   getCourse(id: number): Observable<Course> {
     const url = `${apiUrl}JSON/course/${id}`;
-    return this.http.get<Course>(url).pipe(
+    return this.http.get<Course>(url, this.getHeaders()).pipe(
       tap(courses => console.log(`leu o usuário id=${id}`)),
       catchError(this.handleError<Course>(`getCourse id=${id}`))
     );
   }
 
   postCourse(course): Observable<Course> {
-    return this.http.post<Course>(`${apiUrl}course`, course, httpOptions).pipe(
+    return this.http.post<Course>(`${apiUrl}course`, course, this.getHeaders()).pipe(
       tap((course1: Course) => console.log(`adicionou o curso com w/ id=${course1.id}`)),
       catchError(this.handleError<Course>('postCourse'))
     );
@@ -42,7 +49,7 @@ export class CourseService {
 
   putCourse(id, course): Observable<any> {
     const url = `${apiUrl}course/${id}`;
-    return this.http.put(url, course, httpOptions).pipe(
+    return this.http.put(url, course, this.getHeaders()).pipe(
       tap(_ => console.log(`atualiza o usuário com id=${id}`)),
       catchError(this.handleError<any>('updateCourse'))
     );
@@ -50,7 +57,7 @@ export class CourseService {
 
   deleteCourse(id): Observable<Course> {
     const url = `${apiUrl}Course/${id}`;
-    return this.http.delete<Course>(url, httpOptions).pipe(
+    return this.http.delete<Course>(url, this.getHeaders()).pipe(
       tap(courses => console.log(`remove o usuário com id=${id}`)),
       catchError(this.handleError<Course>('deleteCourse'))
     );
